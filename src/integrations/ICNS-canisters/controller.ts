@@ -20,7 +20,7 @@ declare global {
  * ICNS Canister Controller.
  * This class is responsible for handling all the requests related to the ICNS canister.
  */
-export class registrarCanisterController {
+export class ICNSCanisterController {
   info: Info | null = null
 
   /**
@@ -111,13 +111,13 @@ export class registrarCanisterController {
    * Approve transfers from token to registrar canister.
    * This function uses the actor agent identity.
    * This function needs to be called before operate with registrar canister.
-   * @param {registrarCanisterController.ApproveParams} params
+   * @param {ICNSCanisterController.ApproveParams} params
    * @returns {Promise<void>}
    */
   async approve({
     tokenId,
     amount,
-  }: registrarCanisterController.ApproveParams): Promise<void> {
+  }: ICNSCanisterController.ApproveParams): Promise<void> {
 
     const tokenActor = await createTokenActor({
       canisterId: tokenId,
@@ -147,13 +147,13 @@ export class registrarCanisterController {
   /**
    * Place Bid into canister.
    * This function uses the actor agent identity.
-   * @param {registrarCanisterController.PlaceBidParams} params
+   * @param {ICNSCanisterController.PlaceBidParams} params
    * @returns {Promise<void>}
    */
   async placeBid({
     domain,
     amount,
-  }: registrarCanisterController.PlaceBidParams): Promise<void> {
+  }: ICNSCanisterController.PlaceBidParams): Promise<void> {
 
     const registrarActor = await createRegistrarActor({
       actorAdapter: new ActorAdapter(window.ic?.plug)
@@ -175,13 +175,13 @@ export class registrarCanisterController {
   /**
  * Renew into canister.
  * This function uses the actor agent identity.
- * @param {registrarCanisterController.RenewParams} params
+ * @param {ICNSCanisterController.RenewParams} params
  * @returns {Promise<void>}
  */
   async renew({
     domain,
     duration,
-  }: registrarCanisterController.RenewParams): Promise<void> {
+  }: ICNSCanisterController.RenewParams): Promise<void> {
 
     const registrarActor = await createRegistrarActor({
       actorAdapter: new ActorAdapter(window.ic?.plug)
@@ -243,9 +243,9 @@ export class registrarCanisterController {
 }
 
 /**
- * Type definition for the RegistrarCanisterController.
+ * Type definition for the SwapCanisterController.
  */
-export namespace registrarCanisterController {
+export namespace ICNSCanisterController {
   /**
    * Type definition for params of the approve function.
    * @param {Types.Amount} amount
