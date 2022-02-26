@@ -6,11 +6,6 @@ import {
   ActorAdapter,
   createTokenActor,
   RegistrarActor,
-  RegistryActor,
-  ReserveNameActor,
-  ReverseActor,
-  FavoriteActor,
-  TokenActor,
 } from '..';
 import {
   createRegistrarActor

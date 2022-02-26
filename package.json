@@ -2,7 +2,8 @@
   "name": "icns",
   "version": "0.1.0",
   "description": "ICNS-js is a library that holds an API for interacting with icns's Canisters",
-  "main": "index.js",  "repository": "https://github.com/Psychedelic/sonic-js.git",
+  "main": "index.js",  
+  "repository": "https://github.com/icns-id/icns-js.git",
   "author": "ICNS Team",
   "license": "GLP-3.0",
   "devDependencies": {

@@ -1,2 +1,2 @@
 export * from './actor';
-export * from './ICNScanisters';
+export * from './reverse-canisters';
