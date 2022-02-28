@@ -21,8 +21,15 @@ export const idlRegistryFactory = ({ IDL }) => {
   const ICNSRegistry = IDL.Service({
     'addWhitelist': IDL.Func([IDL.Text], [IDL.Bool], []),
     'approve': IDL.Func([IDL.Text, IDL.Principal], [TxReceipt], []),
+    'balanceOf': IDL.Func([IDL.Principal], [IDL.Nat], ['query']),
     'controller': IDL.Func([IDL.Text], [IDL.Opt(IDL.Principal)], ['query']),
     'expiry': IDL.Func([IDL.Text], [IDL.Opt(Time)], ['query']),
+    'exportOwnerDomains': IDL.Func(
+      [],
+      [IDL.Vec(IDL.Tuple(IDL.Principal, IDL.Vec(IDL.Text)))],
+      ['query'],
+    ),
+    'getApproved': IDL.Func([IDL.Text], [IDL.Opt(IDL.Principal)], ['query']),
     'getControllerDomains': IDL.Func(
       [IDL.Principal],
       [IDL.Opt(IDL.Vec(RecordExt))],
@@ -35,7 +42,7 @@ export const idlRegistryFactory = ({ IDL }) => {
       [IDL.Opt(IDL.Vec(RecordExt))],
       ['query'],
     ),
-    'isApproved': IDL.Func([IDL.Principal, IDL.Text], [IDL.Bool], ['query']),
+    'isApproved': IDL.Func([IDL.Text, IDL.Principal], [IDL.Bool], ['query']),
     'isApprovedForAll': IDL.Func(
       [IDL.Principal, IDL.Principal],
       [IDL.Bool],
@@ -46,7 +53,7 @@ export const idlRegistryFactory = ({ IDL }) => {
     'recordExists': IDL.Func([IDL.Text], [IDL.Bool], ['query']),
     'removeWhitelist': IDL.Func([IDL.Text], [IDL.Bool], []),
     'resolver': IDL.Func([IDL.Text], [IDL.Opt(IDL.Principal)], ['query']),
-    'setApproveForAll': IDL.Func([IDL.Principal, IDL.Bool], [TxReceipt], []),
+    'setApprovalForAll': IDL.Func([IDL.Principal, IDL.Bool], [TxReceipt], []),
     'setController': IDL.Func([IDL.Text, IDL.Principal], [TxReceipt], []),
     'setOwner': IDL.Func([IDL.Text, IDL.Principal], [TxReceipt], []),
     'setRecord': IDL.Func(

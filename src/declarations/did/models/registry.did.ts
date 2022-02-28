@@ -2,22 +2,27 @@ import type { Principal } from '@dfinity/principal';
 export interface ICNSRegistry {
   'addWhitelist': (arg_0: string) => Promise<boolean>,
   'approve': (arg_0: string, arg_1: Principal) => Promise<TxReceipt>,
+  'balanceOf': (arg_0: Principal) => Promise<bigint>,
   'controller': (arg_0: string) => Promise<[] | [Principal]>,
   'expiry': (arg_0: string) => Promise<[] | [Time]>,
+  'exportOwnerDomains': () => Promise<Array<[Principal, Array<string>]>>,
+  'getApproved': (arg_0: string) => Promise<[] | [Principal]>,
   'getControllerDomains': (arg_0: Principal) => Promise<
     [] | [Array<RecordExt>]
   >,
   'getInfo': () => Promise<Info>,
   'getRecord': (arg_0: string) => Promise<[] | [RecordExt]>,
   'getUserDomains': (arg_0: Principal) => Promise<[] | [Array<RecordExt>]>,
-  'isApproved': (arg_0: Principal, arg_1: string) => Promise<boolean>,
+  'isApproved': (arg_0: string, arg_1: Principal) => Promise<boolean>,
   'isApprovedForAll': (arg_0: Principal, arg_1: Principal) => Promise<boolean>,
   'isWhitelisted': (arg_0: string) => Promise<boolean>,
   'owner': (arg_0: string) => Promise<[] | [Principal]>,
   'recordExists': (arg_0: string) => Promise<boolean>,
   'removeWhitelist': (arg_0: string) => Promise<boolean>,
   'resolver': (arg_0: string) => Promise<[] | [Principal]>,
-  'setApproveForAll': (arg_0: Principal, arg_1: boolean) => Promise<TxReceipt>,
+  'setApprovalForAll': (arg_0: Principal, arg_1: boolean) => Promise<
+    TxReceipt
+  >,
   'setController': (arg_0: string, arg_1: Principal) => Promise<TxReceipt>,
   'setOwner': (arg_0: string, arg_1: Principal) => Promise<TxReceipt>,
   'setRecord': (
