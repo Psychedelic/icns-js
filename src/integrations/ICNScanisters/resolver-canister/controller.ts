@@ -120,67 +120,82 @@ export class ICNSResolverController {
       case Types.btc: {
         const result = await this.resolverActor.setAddr(name, 'btc', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.eth: {
         const result = await this.resolverActor.setAddr(name, 'eth', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.icp: {
         const result = await this.resolverActor.setAddr(name, 'icp.account', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.pid: {
         const result = await this.resolverActor.setAddr(name, 'icp.principal', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.addrExtensions: {
         if (!extensionType)
           throw new Error('Please provide extension type')
         const result = await this.resolverActor.setAddr(name, extensionType, [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.twitter: {
         const result = await this.resolverActor.setText(name, 'twitter', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.github: {
         const result = await this.resolverActor.setText(name, 'github', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.discord: {
         const result = await this.resolverActor.setText(name, 'discord', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.telegram: {
         const result = await this.resolverActor.setText(name, 'telegram', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.email: {
         const result = await this.resolverActor.setText(name, 'email', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.url: {
         const result = await this.resolverActor.setText(name, 'url', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.avatar: {
         const result = await this.resolverActor.setText(name, 'avatar', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.description: {
         const result = await this.resolverActor.setText(name, 'description', [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.textExtensions: {
         if (!extensionType)
           throw new Error('Please provide extension type')
         const result = await this.resolverActor.setText(name, extensionType, [value])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.mainCanister: {
         const val = Principal.fromText(value)
         const result = await this.resolverActor.setCanister(name, 'main', [val])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
       case Types.canisterExtensions: {
         if (!extensionType)
@@ -188,7 +203,10 @@ export class ICNSResolverController {
         const val = Principal.fromText(value)
         const result = await this.resolverActor.setCanister(name, extensionType, [val])
         if ('err' in result) throw new Error(JSON.stringify(result.err));
+        break
       }
+      default:
+        throw new Error('Wrong type')
     }
   }
 
