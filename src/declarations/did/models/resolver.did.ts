@@ -57,4 +57,3 @@ interface Info {
 }
 type Result = { 'ok' : null } |
   { 'err' : string };
-interface _SERVICE extends ICNSResolver {}

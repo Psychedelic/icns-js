@@ -27,6 +27,10 @@
       { "transform": "typescript-transform-paths", "afterDeclarations": true }
     ]
   },
+  "typedocOptions": {
+    "entryPoints": ["src/index.ts"],
+    "out": "docs"
+  },
   "include": ["src", "tests", "**/*.js", "**/*.ts", "**/*.tsx"],
   "exclude": []
 }

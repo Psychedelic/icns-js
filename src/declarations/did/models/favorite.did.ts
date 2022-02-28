@@ -8,4 +8,3 @@ export interface ICNSFavorite {
 }
 type Result = { 'ok' : boolean } |
   { 'err' : string };
-interface _SERVICE extends ICNSFavorite {}

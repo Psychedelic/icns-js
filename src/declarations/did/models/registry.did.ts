@@ -78,4 +78,3 @@ export interface RecordExt {
 type Time = bigint;
 type TxReceipt = { 'ok': bigint } |
 { 'err': string };
-interface _SERVICE extends ICNSRegistry { }

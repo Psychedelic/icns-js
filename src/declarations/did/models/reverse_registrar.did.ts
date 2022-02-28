@@ -5,4 +5,3 @@ export interface ICNSReverseRegistrar {
 }
 export type Result = { 'ok' : string } |
   { 'err' : string };
-export interface _SERVICE extends ICNSReverseRegistrar {}

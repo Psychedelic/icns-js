@@ -92,4 +92,3 @@ interface TxRecord {
   'index': bigint,
   'amount': bigint,
 }
-interface _SERVICE extends ICNSToken { }

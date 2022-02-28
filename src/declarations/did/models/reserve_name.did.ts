@@ -8,4 +8,3 @@ export interface ICNSReserveName {
 }
 type Result = { 'ok' : null } |
   { 'err' : string };
-interface _SERVICE extends ICNSReserveName {}

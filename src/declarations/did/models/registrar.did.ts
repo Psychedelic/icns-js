@@ -85,4 +85,3 @@ type Result_3 = { 'ok' : bigint } |
 type Time = bigint;
 export type TxReceipt = { 'ok' : bigint } |
   { 'err' : string };
-interface _SERVICE extends ICNSRegistrar {}
