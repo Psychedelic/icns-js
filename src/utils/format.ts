@@ -1,6 +1,8 @@
 import { Types } from '@/declarations';
 import BigNumber from 'bignumber.js';
 
+const suffix = '.icp'
+
 /**
  * Type definition for options of toBigNumber function.
  */
@@ -86,3 +88,37 @@ export const formatAmount = (amount: Types.Amount): string => {
     return `${isNegative ? '< -' : '> '}999M`;
   }
 };
+
+export const VerifyDomainName = (domain: string | undefined): boolean => {
+  try {
+    if (!domain || domain.length === 0)
+      throw new Error('domain can not be null')
+    const reg = /^[a-z0-9\-]+$/;
+    const name = removeIcpSuffix(domain)
+    if (!reg.test(name))
+      throw new Error('Please check domain format !!!')
+    return true
+  } catch (err) {
+    return false;
+  }
+};
+
+export const removeIcpSuffix = (name: string | undefined): string => {
+  if (typeof name === 'undefined')
+    throw new Error('Wrong domain')
+  if (name.endsWith(suffix))
+    return name.slice(0, name.length - 4)
+  else
+    return name
+}
+
+// _ - number character
+export const addIcpSuffix = (name: string | undefined) => {
+  if (typeof name === 'undefined')
+    throw new Error('Wrong domain')
+  if (!name.endsWith(suffix))
+    return name + suffix
+  else
+    return name
+
+}
