@@ -11,6 +11,11 @@ import {
 } from '../..';
 
 import { addIcpSuffix, VerifyDomainName } from '@/utils/format'
+import { createReverseActor, ReverseActor } from '@/integrations/actor';
+
+declare global {
+  interface Window { ic: any; }
+}
 
 /**
  * ICNS Registry Controller.
@@ -414,6 +419,39 @@ export class ICNSregistryController {
 
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
+
+  // =========================================================================================== //
+  //                               reverse name interface
+  // =========================================================================================== //
+
+  /**
+   * set reverse name according to domain.
+   * @param {string} domain represents user domain, such as: test.icp
+   * @returns {Promise<void>}
+   */
+  async setReverseName(domain: string, sublabel: string, newExpiry: bigint): Promise<void> {
+    if (!VerifyDomainName(domain))
+      throw new Error('Wrong domain name')
+    const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
+    const reverseActor: ReverseActor = await createReverseActor({
+      actorAdapter: new ActorAdapter(window.ic?.plug)
+    })
+    await this.getAgentPrincipal(reverseActor) // get pulg wallet identity
+
+    const result = await reverseActor.setName(name)
+    if ('err' in result) throw new Error(JSON.stringify(result.err));
+  }
+
+  /**
+  * get user's domain.
+  * @param {Principal} owner represents user identity
+  * @returns {Promise<string>}
+  */
+  async getReverseName(owner: Principal): Promise<string> {
+    const reverseActor = await createReverseActor({}) // default anonymous identity
+    return await reverseActor.getName(owner)
+  }
+
 
 }
 

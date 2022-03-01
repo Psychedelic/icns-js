@@ -3,7 +3,6 @@ import {
   idlFavoriteFactory,
   idlRegistrarFactory,
   idlRegistryFactory,
-  idlReserveNameFactory,
   idlResolverFactory,
   idlReverseRegistrarFactory,
   idlWICPFactory
@@ -13,7 +12,6 @@ import {
   ICNSFavorite,
   ICNSRegistrar,
   ICNSRegistry,
-  ICNSReserveName,
   ICNSResolver,
   ICNSReverseRegistrar,
   ICNSToken
@@ -55,7 +53,7 @@ export const createRegistrarActor = ({
 export type RegistryActor = ActorAdapter.Actor<ICNSRegistry>;
 
 /**
- * Creates a DIP20 Token canister actor.
+ * Creates a Registry canister actor.
  * If no option is provided, the actor will be created using the default canister options.
  * @param {CreateCanisterActorOptions} options Options for creating the RegistryActor
  * @returns {RegistryActor} actor instance
@@ -67,31 +65,13 @@ export const createRegistryActor = ({
   return actorAdapter.createActor(canisterId, idlRegistryFactory);
 };
 
-/**
- * Type of ReserveNameActor.
- */
- export type ReserveNameActor = ActorAdapter.Actor<ICNSReserveName>;
-
- /**
-  * Creates a DIP20 Token canister actor.
-  * If no option is provided, the actor will be created using the default canister options.
-  * @param {CreateCanisterActorOptions} options Options for creating the ReserveNameActor
-  * @returns {ReserveNameActor} actor instance
-  */
- export const createReserveNameActor = ({
-   canisterId = Constants.canisterIds.reverse_registrar,
-   actorAdapter = new ActorAdapter(),
- }: CreateCanisterActorOptions): Promise<RegistryActor> => {
-   return actorAdapter.createActor(canisterId, idlReserveNameFactory);
- };
-
  /**
  * Type of ResolverActor.
  */
 export type ResolverActor = ActorAdapter.Actor<ICNSResolver>;
 
 /**
- * Creates a DIP20 Token canister actor.
+ * Creates a Resolver canister actor.
  * If no option is provided, the actor will be created using the default canister options.
  * @param {CreateCanisterActorOptions} options Options for creating the ResolverActor
  * @returns {ResolverActor} actor instance
@@ -109,13 +89,13 @@ export const createResolverActor = ({
   export type ReverseActor = ActorAdapter.Actor<ICNSReverseRegistrar>;
 
   /**
-   * Creates a DIP20 Token canister actor.
+   * Creates a Reverse canister actor.
    * If no option is provided, the actor will be created using the default canister options.
    * @param {CreateCanisterActorOptions} options Options for creating the ReverseActor
    * @returns {ReverseActor} actor instance
    */
   export const createReverseActor = ({
-    canisterId = Constants.canisterIds.resolver,
+    canisterId = Constants.canisterIds.reverse_registrar,
     actorAdapter = new ActorAdapter(),
   }: CreateCanisterActorOptions): Promise<ReverseActor> => {
     return actorAdapter.createActor(canisterId, idlReverseRegistrarFactory);
@@ -127,7 +107,7 @@ export const createResolverActor = ({
  export type FavoriteActor = ActorAdapter.Actor<ICNSFavorite>;
 
  /**
-  * Creates a DIP20 Token canister actor.
+  * Creates a Favorite canister actor.
   * If no option is provided, the actor will be created using the default canister options.
   * @param {CreateCanisterActorOptions} options Options for creating the FavoriteActor
   * @returns {FavoriteActor} actor instance
