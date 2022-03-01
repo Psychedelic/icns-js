@@ -46,13 +46,15 @@ Get domain record exist in registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
 
 #### Returns
 
 `Promise`<`boolean`\>
+
+return whether its record exists
 
 ___
 
@@ -93,6 +95,8 @@ It is going to throw if the principal is anonymous.
 #### Returns
 
 `Promise`<`Principal`\>
+
+return Principal stored in agent
 
 ___
 
@@ -140,13 +144,15 @@ Get domain controller in registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
 
 #### Returns
 
 `Promise`<``null`` \| `Principal`\>
+
+return the Principal id of this name's controller, return null if not set.
 
 ___
 
@@ -158,13 +164,15 @@ Get domain expiry in registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
 
 #### Returns
 
 `Promise`<``null`` \| `bigint`\>
+
+return the expiry time of this domain name, return null if not timed.
 
 ___
 
@@ -176,13 +184,15 @@ Get domain owner in registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
 
 #### Returns
 
 `Promise`<``null`` \| `Principal`\>
+
+return the Principal id of this name's owner, return null if not set.
 
 ___
 
@@ -194,13 +204,15 @@ Get record in registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
 
 #### Returns
 
 `Promise`<``null`` \| [`RecordExt`](../interfaces/RecordExt.md)\>
+
+return record data object
 
 ___
 
@@ -212,13 +224,15 @@ Get domain resolver in registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
 
 #### Returns
 
 `Promise`<``null`` \| `Principal`\>
+
+return the Principal id resolved from this name, return null if not set.
 
 ___
 
@@ -230,9 +244,9 @@ Get domain ttl in registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
 
 #### Returns
 
@@ -316,6 +330,8 @@ set domain controller according to domain.
 
 `Promise`<`void`\>
 
+return nothing
+
 ___
 
 ### setDomainOwner
@@ -334,6 +350,8 @@ set domain owner according to domain.
 #### Returns
 
 `Promise`<`void`\>
+
+return nothing
 
 ___
 
@@ -354,6 +372,8 @@ set domain resolver according to domain.
 
 `Promise`<`void`\>
 
+return nothing
+
 ___
 
 ### setDomainTTL
@@ -373,6 +393,8 @@ set domain ttl according to domain.
 
 `Promise`<`void`\>
 
+return nothing
+
 ___
 
 ### setRecord
@@ -383,13 +405,15 @@ set record according to domain.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `params` | [`RecordParams`](../modules/ICNSRegistryController.md#recordparams) | recoed type |
+| Name | Type |
+| :------ | :------ |
+| `params` | [`RecordParams`](../modules/ICNSRegistryController.md#recordparams) |
 
 #### Returns
 
 `Promise`<`void`\>
+
+return nothing
 
 ___
 
@@ -411,6 +435,8 @@ set sub domain expiry according to domain.
 
 `Promise`<`void`\>
 
+return nothing
+
 ___
 
 ### setSubDomainOwner
@@ -431,6 +457,8 @@ set sub domain owner according to domain.
 
 `Promise`<`void`\>
 
+return nothing
+
 ___
 
 ### setSubnodeRecord
@@ -448,6 +476,8 @@ set subnoderecord according to domain.
 #### Returns
 
 `Promise`<`void`\>
+
+return nothing
 
 ___
 

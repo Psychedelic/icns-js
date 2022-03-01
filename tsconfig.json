@@ -32,5 +32,5 @@
     "out": "docs"
   },
   "include": ["src", "tests", "**/*.js", "**/*.ts", "**/*.tsx"],
-  "exclude": []
+  "exclude": ["src/declarations/*", "src/utils/*", "src/test/*"]
 }
