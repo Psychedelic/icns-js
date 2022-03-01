@@ -1,5 +1,5 @@
 {
-  "name": "icns",
+  "name": "icnsjs",
   "version": "0.1.0",
   "description": "ICNS-js is a library that holds an API for interacting with icns's Canisters",
   "main": "index.js",  
