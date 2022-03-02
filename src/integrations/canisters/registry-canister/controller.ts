@@ -35,11 +35,10 @@ export class ICNSRegistryController {
   /**
    * Get the principal of the agent.
    * It is going to throw if the principal is anonymous.
-   * @param {Actor} params represents an actor
    * @returns {Promise<Principal>} return Principal stored in agent
    */
-  async getAgentPrincipal(actor: Actor): Promise<Principal> {
-    const agent = Actor.agentOf(actor);
+  async getAgentPrincipal(): Promise<Principal> {
+    const agent = Actor.agentOf(this.registryActor);
     if (!agent) throw new Error('Agent principal not found');
 
     const principal = await agent.getPrincipal();
