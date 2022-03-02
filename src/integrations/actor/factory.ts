@@ -61,7 +61,7 @@ export type RegistryActor = ActorAdapter.Actor<ICNSRegistry>;
 export const createRegistryActor = ({
   canisterId = Constants.canisterIds.registry,
   actorAdapter = new ActorAdapter(),
-}: CreateCanisterActorOptions): Promise<RegistryActor> => {
+}: CreateCanisterActorOptions = {}): Promise<RegistryActor> => {
   return actorAdapter.createActor(canisterId, idlRegistryFactory);
 };
 
@@ -79,7 +79,7 @@ export type ResolverActor = ActorAdapter.Actor<ICNSResolver>;
 export const createResolverActor = ({
   canisterId = Constants.canisterIds.resolver,
   actorAdapter = new ActorAdapter(),
-}: CreateCanisterActorOptions): Promise<ResolverActor> => {
+}: CreateCanisterActorOptions = {}): Promise<ResolverActor> => {
   return actorAdapter.createActor(canisterId, idlResolverFactory);
 };
 
@@ -97,7 +97,7 @@ export const createResolverActor = ({
   export const createReverseActor = ({
     canisterId = Constants.canisterIds.reverse_registrar,
     actorAdapter = new ActorAdapter(),
-  }: CreateCanisterActorOptions): Promise<ReverseActor> => {
+  }: CreateCanisterActorOptions = {}): Promise<ReverseActor> => {
     return actorAdapter.createActor(canisterId, idlReverseRegistrarFactory);
   };
 
@@ -115,7 +115,7 @@ export const createResolverActor = ({
  export const createFavoriteActor = ({
    canisterId = Constants.canisterIds.favorite,
    actorAdapter = new ActorAdapter(),
- }: CreateCanisterActorOptions): Promise<FavoriteActor> => {
+ }: CreateCanisterActorOptions = {}): Promise<FavoriteActor> => {
    return actorAdapter.createActor(canisterId, idlFavoriteFactory);
  };
 
