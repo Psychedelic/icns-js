@@ -58,7 +58,7 @@ export interface ICNSToken {
     arg_2: bigint,
   ) => Promise<WICPTxReceipt>,
 }
-export interface TokenInfo {
+interface TokenInfo {
   'holderNumber': bigint,
   'deployTime': Time,
   'metadata': Metadata,
@@ -69,7 +69,7 @@ export interface TokenInfo {
 type TransactionStatus = { 'inprogress': null } |
 { 'failed': null } |
 { 'succeeded': null };
-export type WICPTxReceipt = { 'Ok': bigint } |
+type WICPTxReceipt = { 'Ok': bigint } |
 {
   'Err': { 'InsufficientAllowance': null } |
   { 'InsufficientBalance': null } |
