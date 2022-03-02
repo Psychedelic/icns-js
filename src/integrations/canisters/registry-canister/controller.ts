@@ -1,5 +1,6 @@
 import {
   Constants,
+  Domain,
   idlRegistryFactory,
   RecordExt,
 } from '@/declarations';
@@ -11,17 +12,13 @@ import {
 } from '../..';
 
 import { addIcpSuffix, VerifyDomainName } from '@/utils/format'
-import { createReverseActor, ReverseActor } from '@/integrations/actor';
 
-declare global {
-  interface Window { ic: any; }
-}
 
 /**
  * ICNS Registry Controller.
  * This class is responsible for handling all the requests related to the ICNS registry canister.
  */
-export class ICNSregistryController {
+export class ICNSRegistryController {
 
   /**
    * Create an instance that communicates with icns registry canister.
@@ -64,6 +61,19 @@ export class ICNSregistryController {
     const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
     const response = await this.registryActor.getRecord(name)
     return response[0] ? response[0] : null
+  }
+
+  /**
+    * Get user all registed domains in registry canister.
+    * @param {Principal} user represents user indentity
+    * @returns {Promise<Domain.List>} return record data object 
+    */
+  async getDomainList(user: Principal): Promise<Domain.List> {
+    const response = await this.registryActor.getUserDomains(user)
+    if(!response[0]) return []
+    return response[0].reduce((parsed: string[], item) => {
+      return parsed.concat(item.name)
+    }, [])
   }
 
   /**
@@ -419,39 +429,6 @@ export class ICNSregistryController {
 
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
-
-  // =========================================================================================== //
-  //                               reverse name interface
-  // =========================================================================================== //
-
-  /**
-   * set reverse name according to domain.
-   * @param {string} domain represents user domain, such as: test.icp
-   * @returns {Promise<void>}
-   */
-  async setReverseName(domain: string, sublabel: string, newExpiry: bigint): Promise<void> {
-    if (!VerifyDomainName(domain))
-      throw new Error('Wrong domain name')
-    const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
-    const reverseActor: ReverseActor = await createReverseActor({
-      actorAdapter: new ActorAdapter(window.ic?.plug)
-    })
-    await this.getAgentPrincipal(reverseActor) // get pulg wallet identity
-
-    const result = await reverseActor.setName(name)
-    if ('err' in result) throw new Error(JSON.stringify(result.err));
-  }
-
-  /**
-  * get user's domain.
-  * @param {Principal} owner represents user identity
-  * @returns {Promise<string>}
-  */
-  async getReverseName(owner: Principal): Promise<string> {
-    const reverseActor = await createReverseActor({}) // default anonymous identity
-    return await reverseActor.getName(owner)
-  }
-
 
 }
 
