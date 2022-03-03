@@ -14,12 +14,12 @@ import { addIcpSuffix, VerifyDomainName } from '@/utils/format'
 
 /**
  * ICNS Reverse Controller.
- * This class is responsible for handling all the requests related to the ICNS reverse name canister.
+ * This class is responsible for handling all the requests related to the ICNS reverse registrar canister.
  */
 export class ICNSReverseController {
 
   /**
-   * Create an instance that communicates with icns reverse canister.
+   * Create an instance that communicates with icns reverse registrar canister.
    * Some of the functions uses the actor agent identity to identify the user that is interacting.
    * @param {ReverseActor} reverseActor actor or an anonymous will be used
    */
@@ -72,5 +72,4 @@ export class ICNSReverseController {
     const result =  await this.reverseActor.getName(owner)
     return result
   }
-
 }

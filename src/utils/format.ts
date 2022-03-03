@@ -96,7 +96,7 @@ export const VerifyDomainName = (domain: string | undefined): boolean => {
     const reg = /^[a-z0-9\-]+$/;
     const name = removeIcpSuffix(domain)
     if (!reg.test(name))
-      throw new Error('Please check domain format !!!')
+      throw new Error('please check domain format')
     return true
   } catch (err) {
     return false;
@@ -105,7 +105,7 @@ export const VerifyDomainName = (domain: string | undefined): boolean => {
 
 export const removeIcpSuffix = (name: string | undefined): string => {
   if (typeof name === 'undefined')
-    throw new Error('Wrong domain')
+    throw new Error('name undefined')
   if (name.endsWith(suffix))
     return name.slice(0, name.length - 4)
   else
@@ -115,10 +115,9 @@ export const removeIcpSuffix = (name: string | undefined): string => {
 // _ - number character
 export const addIcpSuffix = (name: string | undefined) => {
   if (typeof name === 'undefined')
-    throw new Error('Wrong domain')
+    throw new Error('name undefined')
   if (!name.endsWith(suffix))
     return name + suffix
   else
     return name
-
 }

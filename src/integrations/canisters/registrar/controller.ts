@@ -41,7 +41,7 @@ export class ICNSRegistrarController {
    * Get the Common Info from registrar canister.
    * @returns {Promise<Info>}
    */
-  async getICNSInfo(): Promise<Info> {
+  async getRegistrarInfo(): Promise<Info> {
     const response = await this.registrarActor.getInfo();
     this.info = response;
     return response;

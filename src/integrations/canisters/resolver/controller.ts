@@ -42,24 +42,24 @@ export class ICNSResolverController {
   }
 
   /**
-   * Get user default info setted in resolver canister.
+   * Get user default info in resolver canister.
    * @param {string} domain  represents user domain, such as: test.icp
    * @returns {Promise<void>} return nothing
    */
   async getUserDefaultInfo(domain: string): Promise<void> {
-    if (!VerifyDomainName(domain)) throw new Error("Wrong domain name");
+    if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     const response = await this.resolverActor.getUserDefaultInfo(name);
     this.DefaultInfo = response[0] ? response[0] : null;
   }
 
   /**
-   * Get principal id according to domain.
+   * Get principal id by name.
    * @param {string} domain  represents user domain, such as: test.icp
    * @returns {Promise<Principal>}
    */
   async getPrincipalId(domain: string): Promise<Principal> {
-    if (!VerifyDomainName(domain)) throw new Error("Wrong domain name");
+    if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     if (this.DefaultInfo === null) await this.getUserDefaultInfo(name);
     if (this.DefaultInfo?.pid[0]) {
@@ -67,18 +67,22 @@ export class ICNSResolverController {
     } else {
       const registry = await createRegistryActor({}); // default anonymous
       const record = await registry.owner(name);
-      if (!record[0]) throw new Error("This domain is not registered");
+      if (!record[0]) throw new Error("This name is not registered");
       return record[0];
     }
   }
 
+  // TODO: 
+  // 1. add functions: getAddr, getCanister, getText, setAddr, setCanister, setAddr
+  // 2. check record validity: coin address validity, text record length, etc.
+
   /**
-   * Get host according to domain.
+   * Get host record.
    * @param {string} domain represents user domain, such as: test.icp
    * @returns {Promise<Principal|string>} return host of a domain name
    */
   async getHost(domain: string): Promise<Principal | string> {
-    if (!VerifyDomainName(domain)) throw new Error("Wrong domain name");
+    if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     if (this.DefaultInfo === null) await this.getUserDefaultInfo(name);
     if (this.DefaultInfo?.host[0]) {
@@ -103,7 +107,7 @@ export class ICNSResolverController {
     value: string,
     extensionType?: string
   ): Promise<void> {
-    if (!VerifyDomainName(domain)) throw new Error("Wrong domain name");
+    if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     const Types = ICNSResolverController.DefaultInfo;
     switch (type) {
@@ -224,7 +228,7 @@ export class ICNSResolverController {
   }
 
   /**
-   * set host according to domain.
+   * set host record.
    * @param {string} domain  represents user domain, such as: test.icp
    * @param {ICNSResolverController.HostParams} params host type
    * @returns {Promise<void>}
@@ -233,7 +237,7 @@ export class ICNSResolverController {
     domain: string,
     params?: ICNSResolverController.HostParams
   ): Promise<void> {
-    if (!VerifyDomainName(domain)) throw new Error("Wrong domain name");
+    if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     if (!params) {
       throw new Error("Wrong host info");
@@ -244,7 +248,7 @@ export class ICNSResolverController {
       const result = await this.resolverActor.setHost(name, [params]);
       if ("err" in result) throw new Error(JSON.stringify(result.err));
     } else {
-      throw new Error("Wrong Host format");
+      throw new Error("Wrong host format");
     }
   }
 }
