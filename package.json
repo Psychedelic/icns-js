@@ -1,8 +1,8 @@
 {
   "name": "icnsjs",
   "version": "0.1.1",
-  "description": "ICNS-js is a library that holds an API for interacting with icns's Canisters",
-  "main": "dist/index.js",
+  "description": "ICNS-js is a library for interacting with ICNS canisters",
+  "main": "dist/index.js",  
   "repository": "https://github.com/icns-id/icns-js.git",
   "author": "ICNS Team",
   "license": "GLP-3.0",
