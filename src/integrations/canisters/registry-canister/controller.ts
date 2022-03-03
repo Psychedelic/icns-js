@@ -1,9 +1,9 @@
 import {
   Constants,
   Domain,
-  idlRegistryFactory,
   RecordExt,
 } from '@/declarations';
+import { idlRegistryFactory } from '@/declarations/did/registry.did'
 import { Actor } from '@dfinity/agent';
 import { Principal } from '@dfinity/principal';
 import {
@@ -162,7 +162,7 @@ export class ICNSRegistryController {
     if (!VerifyDomainName(params.node))
       throw new Error('Wrong domain name')
     const name = addIcpSuffix(params.node) // guarantee the domain name with .icp suffix
-    await this.getAgentPrincipal(this.registryActor) // get pulg wallet identity
+    await this.getAgentPrincipal() // get pulg wallet identity this.registryActor
     const result = await this.registryActor.setRecord(name, params.owner, params.registry, params.ttl, params.expiry)
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
@@ -176,7 +176,7 @@ export class ICNSRegistryController {
     if (!VerifyDomainName(params.node))
       throw new Error('Wrong domain name')
     const name = addIcpSuffix(params.node) // guarantee the domain name with .icp suffix
-    await this.getAgentPrincipal(this.registryActor) // get pulg wallet identity
+    await this.getAgentPrincipal() // get pulg wallet identity this.registryActor
     const result = await this.registryActor.setSubnodeRecord(name, params.sublabel!, params.owner, params.registry, params.ttl, params.expiry)
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
@@ -190,8 +190,8 @@ export class ICNSRegistryController {
   async setDomainOwner(domain: string, owner: Principal): Promise<void> {
     if (!VerifyDomainName(domain))
       throw new Error('Wrong domain name')
-    const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
-    await this.getAgentPrincipal(this.registryActor) // get pulg wallet identity
+    const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix 
+    await this.getAgentPrincipal() // get pulg wallet identity this.registryActor
     const result = await this.registryActor.setOwner(name, owner)
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
@@ -206,7 +206,7 @@ export class ICNSRegistryController {
     if (!VerifyDomainName(domain))
       throw new Error('Wrong domain name')
     const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
-    await this.getAgentPrincipal(this.registryActor) // get pulg wallet identity
+    await this.getAgentPrincipal() // get pulg wallet identity this.registryActor
     const result = await this.registryActor.setController(name, controller)
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
@@ -221,7 +221,7 @@ export class ICNSRegistryController {
     if (!VerifyDomainName(domain))
       throw new Error('Wrong domain name')
     const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
-    await this.getAgentPrincipal(this.registryActor) // get pulg wallet identity
+    await this.getAgentPrincipal() // get pulg wallet identity this.registryActor
     const result = await this.registryActor.setResolver(name, resolver)
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
@@ -236,7 +236,7 @@ export class ICNSRegistryController {
     if (!VerifyDomainName(domain))
       throw new Error('Wrong domain name')
     const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
-    await this.getAgentPrincipal(this.registryActor) // get pulg wallet identity
+    await this.getAgentPrincipal() // get pulg wallet identity this.registryActor
     const result = await this.registryActor.setTTL(name, ttl)
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
@@ -252,7 +252,7 @@ export class ICNSRegistryController {
     if (!VerifyDomainName(domain))
       throw new Error('Wrong domain name')
     const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
-    await this.getAgentPrincipal(this.registryActor) // get pulg wallet identity
+    await this.getAgentPrincipal() // get pulg wallet identity this.registryActor
     const result = await this.registryActor.setSubnodeOwner(name, sublabel, owner)
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
@@ -267,8 +267,8 @@ export class ICNSRegistryController {
   async setSubDomainExpiry(domain: string, sublabel: string, newExpiry: bigint): Promise<void> {
     if (!VerifyDomainName(domain))
       throw new Error('Wrong domain name')
-    const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
-    await this.getAgentPrincipal(this.registryActor) // get pulg wallet identity
+    const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix 
+    await this.getAgentPrincipal() // get pulg wallet identity this.registryActor
     const result = await this.registryActor.setSubnodeExpiry(name, sublabel, newExpiry)
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
@@ -336,7 +336,7 @@ export class ICNSRegistryController {
     operator: Principal,
   ): Promise<void> {
 
-    await this.getAgentPrincipal(this.registryActor);
+    await this.getAgentPrincipal(); //this.registryActor
 
     const result = await this.registryActor.approve(
       domain,
@@ -359,7 +359,7 @@ export class ICNSRegistryController {
     operator: Principal,
   ): Promise<void> {
 
-    await this.getAgentPrincipal(this.registryActor);
+    await this.getAgentPrincipal(); //this.registryActor
 
     const result = await this.registryActor.setApprovalForAll(
       operator,
@@ -385,7 +385,7 @@ export class ICNSRegistryController {
       throw new Error('Wrong domain name')
     const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
 
-    const principal = await this.getAgentPrincipal(this.registryActor);
+    const principal = await this.getAgentPrincipal(); //this.registryActor
     if (principal !== await this.getDomainOwner(name))
       throw new Error('not domain owner')
 
@@ -415,7 +415,7 @@ export class ICNSRegistryController {
       throw new Error('Wrong domain name')
     const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
 
-    const principal = await this.getAgentPrincipal(this.registryActor);
+    const principal = await this.getAgentPrincipal(); //this.registryActor
 
     if (principal !== await this.getApproved(name))
       throw new Error('not allowed !!!')

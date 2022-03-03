@@ -1,7 +1,7 @@
 import { Principal } from '@dfinity/principal';
 
 export const mockPrincipalId = (): string =>
-  '4qehi-lqyo6-afz4c-hwqwo-lubfi-4evgk-5vrn5-rldx2-lheha-xs7a4-gae';
+  'gtivl-de57g-wfda6-jun36-smgwb-6fql7-esrb2-gqm5q-dr2mg-fiakp-jae';
 
 export const mockPrincipal = (): Principal =>
   Principal.fromText(mockPrincipalId());

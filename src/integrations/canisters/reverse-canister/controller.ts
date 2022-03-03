@@ -1,7 +1,7 @@
 import {
   Constants,
-  idlReverseRegistrarFactory,
 } from '@/declarations';
+import { idlReverseRegistrarFactory } from '@/declarations/did/reverse_registrar.did'
 import { Actor } from '@dfinity/agent';
 import { Principal } from '@dfinity/principal';
 import {
@@ -57,7 +57,7 @@ export class ICNSReverseController {
       throw new Error('Wrong domain name')
     const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
 
-    await this.getAgentPrincipal(this.reverseActor) // get pulg wallet identity
+    await this.getAgentPrincipal() // get pulg wallet identity this.reverseActor
 
     const result = await this.reverseActor.setName(name)
     if ('err' in result) throw new Error(JSON.stringify(result.err));
