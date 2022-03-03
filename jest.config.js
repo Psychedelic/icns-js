@@ -12,7 +12,7 @@ module.exports = {
   modulePaths: ['<rootDir>/src'],
   coveragePathIgnorePatterns: ['mocks'],
   transformIgnorePatterns: [
-    'node_modules/(?!(module-that-needs-to-be-transformed)/)' 
+    'node_modules/(?!(@dfinity/principal)/)' 
   ],
   globals: {
     extensionsToTreatAsEsm: ['.ts', '.js'],
@@ -20,6 +20,5 @@ module.exports = {
       useESM: true
     }
   },
-
 };
 
