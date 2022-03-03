@@ -18,7 +18,6 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "jsx": "preserve",
     "declaration": true,
     "plugins": [
       // Transform paths in output .js files
@@ -31,6 +30,6 @@
     "entryPoints": ["src/index.ts"],
     "out": "docs"
   },
-  "include": ["src", "tests", "**/*.js", "**/*.ts", "**/*.tsx"],
-  "exclude": ["src/declarations/*", "src/utils/*", "src/test/*"]
+  "include": ["src", "tests"],
+  "exclude": ["**/*/*.js"]
 }

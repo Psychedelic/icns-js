@@ -1,4 +1,4 @@
-import { Constants } from '@/declarations';
+import { ICNSConstants } from '@/declarations';
 import {
   idlFavoriteFactory,
   idlRegistrarFactory,
@@ -40,7 +40,7 @@ export type RegistrarActor = ActorAdapter.Actor<ICNSRegistrar>;
  * @returns {RegistrarActor} actor instance
  */
 export const createRegistrarActor = ({
-  canisterId = Constants.canisterIds.registrar,
+  canisterId = ICNSConstants.canisterIds.registrar,
   actorAdapter = new ActorAdapter(), // defalut anonymous
 }: CreateCanisterActorOptions = {}): Promise<RegistrarActor> => {
   return actorAdapter.createActor(canisterId, idlRegistrarFactory);
@@ -59,7 +59,7 @@ export type RegistryActor = ActorAdapter.Actor<ICNSRegistry>;
  * @returns {RegistryActor} actor instance
  */
 export const createRegistryActor = ({
-  canisterId = Constants.canisterIds.registry,
+  canisterId = ICNSConstants.canisterIds.registry,
   actorAdapter = new ActorAdapter(),
 }: CreateCanisterActorOptions = {}): Promise<RegistryActor> => {
   return actorAdapter.createActor(canisterId, idlRegistryFactory);
@@ -77,7 +77,7 @@ export type ResolverActor = ActorAdapter.Actor<ICNSResolver>;
  * @returns {ResolverActor} actor instance
  */
 export const createResolverActor = ({
-  canisterId = Constants.canisterIds.resolver,
+  canisterId = ICNSConstants.canisterIds.resolver,
   actorAdapter = new ActorAdapter(),
 }: CreateCanisterActorOptions = {}): Promise<ResolverActor> => {
   return actorAdapter.createActor(canisterId, idlResolverFactory);
@@ -95,7 +95,7 @@ export const createResolverActor = ({
    * @returns {ReverseActor} actor instance
    */
   export const createReverseActor = ({
-    canisterId = Constants.canisterIds.reverse_registrar,
+    canisterId = ICNSConstants.canisterIds.reverse_registrar,
     actorAdapter = new ActorAdapter(),
   }: CreateCanisterActorOptions = {}): Promise<ReverseActor> => {
     return actorAdapter.createActor(canisterId, idlReverseRegistrarFactory);
@@ -113,7 +113,7 @@ export const createResolverActor = ({
   * @returns {FavoriteActor} actor instance
   */
  export const createFavoriteActor = ({
-   canisterId = Constants.canisterIds.favorite,
+   canisterId = ICNSConstants.canisterIds.favorite,
    actorAdapter = new ActorAdapter(),
  }: CreateCanisterActorOptions = {}): Promise<FavoriteActor> => {
    return actorAdapter.createActor(canisterId, idlFavoriteFactory);
@@ -131,7 +131,7 @@ export type TokenActor = ActorAdapter.Actor<ICNSToken>;
  * @returns {TokenActor} actor instance
  */
 export const createTokenActor = ({
-  canisterId = Constants.canisterIds.WICP,
+  canisterId = ICNSConstants.canisterIds.WICP,
   actorAdapter = new ActorAdapter(),
 }: CreateCanisterActorOptions): Promise<TokenActor> => {
   return actorAdapter.createActor(canisterId, idlWICPFactory);

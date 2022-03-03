@@ -1,4 +1,4 @@
-import { Constants } from '@/declarations';
+import { ICNSConstants } from '@/declarations';
 import { Actor, ActorSubclass, Agent, HttpAgent } from '@dfinity/agent';
 import { IDL } from '@dfinity/candid';
 import fetch from 'cross-fetch';
@@ -13,8 +13,8 @@ export class ActorAdapter {
 
     private provider?: ActorAdapter.Provider,
     private options: ActorAdapter.Options = {
-      host: Constants.host,
-      whitelist: [Constants.canisterIds.registrar], //default registrar actor
+      host: ICNSConstants.host,
+      whitelist: [ICNSConstants.canisterIds.registrar], //default registrar actor
     }
   ) { }
 
@@ -65,7 +65,7 @@ export class ActorAdapter {
 
   /**
    * Creates the agent from provider.
-   * @param {string[]} extraWhitelist Extra whitelist to add to the Constants whitelist
+   * @param {string[]} extraWhitelist Extra whitelist to add to the ICNSConstants whitelist
    * @returns {Promise<void>}
    */
   private async createAgent(extraWhitelist: string[] = []): Promise<void> {
@@ -99,7 +99,7 @@ export class ActorAdapter {
   static createAnonymousActor<T>(
     canisterId: string,
     interfaceFactory: IDL.InterfaceFactory,
-    host = Constants.host
+    host = ICNSConstants.host
   ): ActorAdapter.Actor<T> {
     const agent = new HttpAgent({ host, fetch });
 

@@ -27,7 +27,7 @@ ___
 
 ### setName
 
-▸ **setName**(`arg_0`): `Promise`<[`Result`](../README.md#result)\>
+▸ **setName**(`arg_0`): `Promise`<`Result`\>
 
 #### Parameters
 
@@ -37,4 +37,4 @@ ___
 
 #### Returns
 
-`Promise`<[`Result`](../README.md#result)\>
+`Promise`<`Result`\>

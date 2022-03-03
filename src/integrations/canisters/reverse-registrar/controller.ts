@@ -1,5 +1,5 @@
 import {
-  Constants,
+  ICNSConstants,
 } from '@/declarations';
 import { idlReverseRegistrarFactory } from '@/declarations/did/reverse_registrar.did'
 import { Actor } from '@dfinity/agent';
@@ -25,7 +25,7 @@ export class ICNSReverseController {
    */
   constructor(
     private reverseActor: ReverseActor = ActorAdapter.createAnonymousActor<ReverseActor>(
-      Constants.canisterIds.reverse_registrar,
+      ICNSConstants.canisterIds.reverse_registrar,
       idlReverseRegistrarFactory
     )
   ) { }

@@ -1,4 +1,4 @@
-# icns
+# icns-js
 
 ## Table of contents
 
@@ -6,12 +6,14 @@
 
 - [ActorAdapter](classes/ActorAdapter.md)
 - [ICNSRegistrarController](classes/ICNSRegistrarController.md)
+- [ICNSRegistryController](classes/ICNSRegistryController.md)
 - [ICNSResolverController](classes/ICNSResolverController.md)
-- [ICNSregistryController](classes/ICNSregistryController.md)
+- [ICNSReverseController](classes/ICNSReverseController.md)
 
 ### Namespaces
 
 - [ActorAdapter](modules/ActorAdapter.md)
+- [Domain](modules/Domain.md)
 - [ICNSRegistrarController](modules/ICNSRegistrarController.md)
 - [ICNSRegistryController](modules/ICNSRegistryController.md)
 - [ICNSResolverController](modules/ICNSResolverController.md)
@@ -27,7 +29,6 @@
 - [ICNSFavorite](interfaces/ICNSFavorite.md)
 - [ICNSRegistrar](interfaces/ICNSRegistrar.md)
 - [ICNSRegistry](interfaces/ICNSRegistry.md)
-- [ICNSReserveName](interfaces/ICNSReserveName.md)
 - [ICNSResolver](interfaces/ICNSResolver.md)
 - [ICNSReverseRegistrar](interfaces/ICNSReverseRegistrar.md)
 - [ICNSToken](interfaces/ICNSToken.md)
@@ -35,7 +36,6 @@
 - [Metadata](interfaces/Metadata.md)
 - [RecordExt](interfaces/RecordExt.md)
 - [ToBigNumberOptions](interfaces/ToBigNumberOptions.md)
-- [TokenInfo](interfaces/TokenInfo.md)
 
 ### Type aliases
 
@@ -44,17 +44,14 @@
 - [Operation](README.md#operation)
 - [RegistrarActor](README.md#registraractor)
 - [RegistryActor](README.md#registryactor)
-- [ReserveNameActor](README.md#reservenameactor)
 - [ResolverActor](README.md#resolveractor)
-- [Result](README.md#result)
 - [ReverseActor](README.md#reverseactor)
 - [TokenActor](README.md#tokenactor)
 - [TxReceipt](README.md#txreceipt)
-- [WICPTxReceipt](README.md#wicptxreceipt)
 
 ### Variables
 
-- [Constants](README.md#constants)
+- [ICNSConstants](README.md#icnsconstants)
 
 ### Functions
 
@@ -63,7 +60,6 @@
 - [createFavoriteActor](README.md#createfavoriteactor)
 - [createRegistrarActor](README.md#createregistraractor)
 - [createRegistryActor](README.md#createregistryactor)
-- [createReserveNameActor](README.md#createreservenameactor)
 - [createResolverActor](README.md#createresolveractor)
 - [createReverseActor](README.md#createreverseactor)
 - [createTokenActor](README.md#createtokenactor)
@@ -72,7 +68,6 @@
 - [idlFavoriteFactory](README.md#idlfavoritefactory)
 - [idlRegistrarFactory](README.md#idlregistrarfactory)
 - [idlRegistryFactory](README.md#idlregistryfactory)
-- [idlReserveNameFactory](README.md#idlreservenamefactory)
 - [idlResolverFactory](README.md#idlresolverfactory)
 - [idlReverseRegistrarFactory](README.md#idlreverseregistrarfactory)
 - [idlWICPFactory](README.md#idlwicpfactory)
@@ -119,25 +114,11 @@ Type of RegistryActor.
 
 ___
 
-### ReserveNameActor
-
-Ƭ **ReserveNameActor**: [`Actor`](modules/ActorAdapter.md#actor)<[`ICNSReserveName`](interfaces/ICNSReserveName.md)\>
-
-Type of ReserveNameActor.
-
-___
-
 ### ResolverActor
 
 Ƭ **ResolverActor**: [`Actor`](modules/ActorAdapter.md#actor)<[`ICNSResolver`](interfaces/ICNSResolver.md)\>
 
 Type of ResolverActor.
-
-___
-
-### Result
-
-Ƭ **Result**: { `ok`: `string`  } \| { `err`: `string`  }
 
 ___
 
@@ -161,19 +142,13 @@ ___
 
 Ƭ **TxReceipt**: { `ok`: `bigint`  } \| { `err`: `string`  }
 
-___
-
-### WICPTxReceipt
-
-Ƭ **WICPTxReceipt**: { `Ok`: `bigint`  } \| { `Err`: { `InsufficientAllowance`: ``null``  } \| { `InsufficientBalance`: ``null``  } \| { `ErrorOperationStyle`: ``null``  } \| { `Unauthorized`: ``null``  } \| { `LedgerTrap`: ``null``  } \| { `ErrorTo`: ``null``  } \| { `Other`: ``null``  } \| { `BlockUsed`: ``null``  } \| { `AmountTooSmall`: ``null``  }  }
-
 ## Variables
 
-### Constants
+### ICNSConstants
 
-• `Const` **Constants**: `Object`
+• `Const` **ICNSConstants**: `Object`
 
-Constants values used on ICNS-js library.
+ICNSConstants values used on ICNS-js library.
 
 #### Type declaration
 
@@ -225,9 +200,9 @@ ___
 
 ### createFavoriteActor
 
-▸ **createFavoriteActor**(`options`): `Promise`<[`FavoriteActor`](README.md#favoriteactor)\>
+▸ **createFavoriteActor**(`options?`): `Promise`<[`FavoriteActor`](README.md#favoriteactor)\>
 
-Creates a DIP20 Token canister actor.
+Creates a Favorite canister actor.
 If no option is provided, the actor will be created using the default canister options.
 
 #### Parameters
@@ -267,9 +242,9 @@ ___
 
 ### createRegistryActor
 
-▸ **createRegistryActor**(`options`): `Promise`<[`RegistryActor`](README.md#registryactor)\>
+▸ **createRegistryActor**(`options?`): `Promise`<[`RegistryActor`](README.md#registryactor)\>
 
-Creates a DIP20 Token canister actor.
+Creates a Registry canister actor.
 If no option is provided, the actor will be created using the default canister options.
 
 #### Parameters
@@ -286,32 +261,11 @@ actor instance
 
 ___
 
-### createReserveNameActor
-
-▸ **createReserveNameActor**(`options`): `Promise`<[`RegistryActor`](README.md#registryactor)\>
-
-Creates a DIP20 Token canister actor.
-If no option is provided, the actor will be created using the default canister options.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | [`CreateCanisterActorOptions`](interfaces/CreateCanisterActorOptions.md) | Options for creating the ReserveNameActor |
-
-#### Returns
-
-`Promise`<[`RegistryActor`](README.md#registryactor)\>
-
-actor instance
-
-___
-
 ### createResolverActor
 
-▸ **createResolverActor**(`options`): `Promise`<[`ResolverActor`](README.md#resolveractor)\>
+▸ **createResolverActor**(`options?`): `Promise`<[`ResolverActor`](README.md#resolveractor)\>
 
-Creates a DIP20 Token canister actor.
+Creates a Resolver canister actor.
 If no option is provided, the actor will be created using the default canister options.
 
 #### Parameters
@@ -330,9 +284,9 @@ ___
 
 ### createReverseActor
 
-▸ **createReverseActor**(`options`): `Promise`<[`ReverseActor`](README.md#reverseactor)\>
+▸ **createReverseActor**(`options?`): `Promise`<[`ReverseActor`](README.md#reverseactor)\>
 
-Creates a DIP20 Token canister actor.
+Creates a Reverse canister actor.
 If no option is provided, the actor will be created using the default canister options.
 
 #### Parameters
@@ -435,22 +389,6 @@ ___
 ### idlRegistryFactory
 
 ▸ **idlRegistryFactory**(`__namedParameters`): `any`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-
-#### Returns
-
-`any`
-
-___
-
-### idlReserveNameFactory
-
-▸ **idlReserveNameFactory**(`__namedParameters`): `any`
 
 #### Parameters
 

@@ -54,7 +54,7 @@ ___
 
 ### approve
 
-▸ **approve**(`arg_0`, `arg_1`): `Promise`<[`WICPTxReceipt`](../README.md#wicptxreceipt)\>
+▸ **approve**(`arg_0`, `arg_1`): `Promise`<`WICPTxReceipt`\>
 
 #### Parameters
 
@@ -65,7 +65,7 @@ ___
 
 #### Returns
 
-`Promise`<[`WICPTxReceipt`](../README.md#wicptxreceipt)\>
+`Promise`<`WICPTxReceipt`\>
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 ### burn
 
-▸ **burn**(`arg_0`): `Promise`<[`WICPTxReceipt`](../README.md#wicptxreceipt)\>
+▸ **burn**(`arg_0`): `Promise`<`WICPTxReceipt`\>
 
 #### Parameters
 
@@ -97,7 +97,7 @@ ___
 
 #### Returns
 
-`Promise`<[`WICPTxReceipt`](../README.md#wicptxreceipt)\>
+`Promise`<`WICPTxReceipt`\>
 
 ___
 
@@ -160,11 +160,11 @@ ___
 
 ### getTokenInfo
 
-▸ **getTokenInfo**(): `Promise`<[`TokenInfo`](TokenInfo.md)\>
+▸ **getTokenInfo**(): `Promise`<`TokenInfo`\>
 
 #### Returns
 
-`Promise`<[`TokenInfo`](TokenInfo.md)\>
+`Promise`<`TokenInfo`\>
 
 ___
 
@@ -273,7 +273,7 @@ ___
 
 ### mint
 
-▸ **mint**(`arg_0`, `arg_1`): `Promise`<[`WICPTxReceipt`](../README.md#wicptxreceipt)\>
+▸ **mint**(`arg_0`, `arg_1`): `Promise`<`WICPTxReceipt`\>
 
 #### Parameters
 
@@ -284,7 +284,7 @@ ___
 
 #### Returns
 
-`Promise`<[`WICPTxReceipt`](../README.md#wicptxreceipt)\>
+`Promise`<`WICPTxReceipt`\>
 
 ___
 
@@ -400,7 +400,7 @@ ___
 
 ### transfer
 
-▸ **transfer**(`arg_0`, `arg_1`): `Promise`<[`WICPTxReceipt`](../README.md#wicptxreceipt)\>
+▸ **transfer**(`arg_0`, `arg_1`): `Promise`<`WICPTxReceipt`\>
 
 #### Parameters
 
@@ -411,13 +411,13 @@ ___
 
 #### Returns
 
-`Promise`<[`WICPTxReceipt`](../README.md#wicptxreceipt)\>
+`Promise`<`WICPTxReceipt`\>
 
 ___
 
 ### transferFrom
 
-▸ **transferFrom**(`arg_0`, `arg_1`, `arg_2`): `Promise`<[`WICPTxReceipt`](../README.md#wicptxreceipt)\>
+▸ **transferFrom**(`arg_0`, `arg_1`, `arg_2`): `Promise`<`WICPTxReceipt`\>
 
 #### Parameters
 
@@ -429,4 +429,4 @@ ___
 
 #### Returns
 
-`Promise`<[`WICPTxReceipt`](../README.md#wicptxreceipt)\>
+`Promise`<`WICPTxReceipt`\>

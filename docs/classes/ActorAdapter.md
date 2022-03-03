@@ -66,7 +66,7 @@ Create an anonymous actor.
 | :------ | :------ | :------ | :------ |
 | `canisterId` | `string` | `undefined` | The canister id of the actor |
 | `interfaceFactory` | `InterfaceFactory` | `undefined` | The interface factory of the actor |
-| `host` | `string` | `Constants.host` | The IC host to connect to |
+| `host` | `string` | `ICNSConstants.host` | The IC host to connect to |
 
 #### Returns
 
@@ -113,7 +113,7 @@ Creates the agent from provider.
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `extraWhitelist` | `string`[] | `[]` | Extra whitelist to add to the Constants whitelist |
+| `extraWhitelist` | `string`[] | `[]` | Extra whitelist to add to the ICNSConstants whitelist |
 
 #### Returns
 

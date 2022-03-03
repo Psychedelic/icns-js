@@ -1,4 +1,4 @@
-# Class: ICNSregistryController
+# Class: ICNSRegistryController
 
 ICNS Registry Controller.
 This class is responsible for handling all the requests related to the ICNS registry canister.
@@ -7,56 +7,37 @@ This class is responsible for handling all the requests related to the ICNS regi
 
 ### Methods
 
-- [IsRecordExists](ICNSregistryController.md#isrecordexists)
-- [approve](ICNSregistryController.md#approve)
-- [getAgentPrincipal](ICNSregistryController.md#getagentprincipal)
-- [getApproved](ICNSregistryController.md#getapproved)
-- [getDomainBalanceOf](ICNSregistryController.md#getdomainbalanceof)
-- [getDomainController](ICNSregistryController.md#getdomaincontroller)
-- [getDomainExpiry](ICNSregistryController.md#getdomainexpiry)
-- [getDomainOwner](ICNSregistryController.md#getdomainowner)
-- [getDomainRecord](ICNSregistryController.md#getdomainrecord)
-- [getDomainResolver](ICNSregistryController.md#getdomainresolver)
-- [getDomainTTL](ICNSregistryController.md#getdomainttl)
-- [isApproveForAll](ICNSregistryController.md#isapproveforall)
-- [isApproved](ICNSregistryController.md#isapproved)
-- [setApprovalForAll](ICNSregistryController.md#setapprovalforall)
-- [setDomainController](ICNSregistryController.md#setdomaincontroller)
-- [setDomainOwner](ICNSregistryController.md#setdomainowner)
-- [setDomainResolver](ICNSregistryController.md#setdomainresolver)
-- [setDomainTTL](ICNSregistryController.md#setdomainttl)
-- [setRecord](ICNSregistryController.md#setrecord)
-- [setSubDomainExpiry](ICNSregistryController.md#setsubdomainexpiry)
-- [setSubDomainOwner](ICNSregistryController.md#setsubdomainowner)
-- [setSubnodeRecord](ICNSregistryController.md#setsubnoderecord)
-- [transfer](ICNSregistryController.md#transfer)
-- [transferFrom](ICNSregistryController.md#transferfrom)
+- [approve](ICNSRegistryController.md#approve)
+- [balanceOf](ICNSRegistryController.md#balanceof)
+- [getAgentPrincipal](ICNSRegistryController.md#getagentprincipal)
+- [getApproved](ICNSRegistryController.md#getapproved)
+- [getController](ICNSRegistryController.md#getcontroller)
+- [getExpiry](ICNSRegistryController.md#getexpiry)
+- [getOwner](ICNSRegistryController.md#getowner)
+- [getRecord](ICNSRegistryController.md#getrecord)
+- [getResolver](ICNSRegistryController.md#getresolver)
+- [getTTL](ICNSRegistryController.md#getttl)
+- [getUserNames](ICNSRegistryController.md#getusernames)
+- [isApproved](ICNSRegistryController.md#isapproved)
+- [isApprovedForAll](ICNSRegistryController.md#isapprovedforall)
+- [recordExists](ICNSRegistryController.md#recordexists)
+- [setApprovalForAll](ICNSRegistryController.md#setapprovalforall)
+- [setController](ICNSRegistryController.md#setcontroller)
+- [setOwner](ICNSRegistryController.md#setowner)
+- [setRecord](ICNSRegistryController.md#setrecord)
+- [setResolver](ICNSRegistryController.md#setresolver)
+- [setSubDomainExpiry](ICNSRegistryController.md#setsubdomainexpiry)
+- [setSubDomainOwner](ICNSRegistryController.md#setsubdomainowner)
+- [setSubnodeRecord](ICNSRegistryController.md#setsubnoderecord)
+- [setTTL](ICNSRegistryController.md#setttl)
+- [transfer](ICNSRegistryController.md#transfer)
+- [transferFrom](ICNSRegistryController.md#transferfrom)
 
 ### Constructors
 
-- [constructor](ICNSregistryController.md#constructor)
+- [constructor](ICNSRegistryController.md#constructor)
 
 ## Methods
-
-### IsRecordExists
-
-▸ **IsRecordExists**(`domain`): `Promise`<`boolean`\>
-
-Get domain record exist in registry canister.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
-
-#### Returns
-
-`Promise`<`boolean`\>
-
-return whether its record exists
-
-___
 
 ### approve
 
@@ -79,18 +60,30 @@ This function needs to be called before operate with registry canister.
 
 ___
 
-### getAgentPrincipal
+### balanceOf
 
-▸ **getAgentPrincipal**(`actor`): `Promise`<`Principal`\>
+▸ **balanceOf**(`owner`): `Promise`<`bigint`\>
 
-Get the principal of the agent.
-It is going to throw if the principal is anonymous.
+get user's domain.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `actor` | `Actor` |
+| `owner` | `Principal` |
+
+#### Returns
+
+`Promise`<`bigint`\>
+
+___
+
+### getAgentPrincipal
+
+▸ **getAgentPrincipal**(): `Promise`<`Principal`\>
+
+Get the principal of the agent.
+It is going to throw if the principal is anonymous.
 
 #### Returns
 
@@ -118,27 +111,9 @@ get approv for domain.
 
 ___
 
-### getDomainBalanceOf
+### getController
 
-▸ **getDomainBalanceOf**(`owner`): `Promise`<`bigint`\>
-
-get user's domain.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `owner` | `Principal` |
-
-#### Returns
-
-`Promise`<`bigint`\>
-
-___
-
-### getDomainController
-
-▸ **getDomainController**(`domain`): `Promise`<``null`` \| `Principal`\>
+▸ **getController**(`domain`): `Promise`<``null`` \| `Principal`\>
 
 Get domain controller in registry canister.
 
@@ -156,9 +131,9 @@ return the Principal id of this name's controller, return null if not set.
 
 ___
 
-### getDomainExpiry
+### getExpiry
 
-▸ **getDomainExpiry**(`domain`): `Promise`<``null`` \| `bigint`\>
+▸ **getExpiry**(`domain`): `Promise`<``null`` \| `bigint`\>
 
 Get domain expiry in registry canister.
 
@@ -176,9 +151,9 @@ return the expiry time of this domain name, return null if not timed.
 
 ___
 
-### getDomainOwner
+### getOwner
 
-▸ **getDomainOwner**(`domain`): `Promise`<``null`` \| `Principal`\>
+▸ **getOwner**(`domain`): `Promise`<``null`` \| `Principal`\>
 
 Get domain owner in registry canister.
 
@@ -196,9 +171,9 @@ return the Principal id of this name's owner, return null if not set.
 
 ___
 
-### getDomainRecord
+### getRecord
 
-▸ **getDomainRecord**(`domain`): `Promise`<``null`` \| [`RecordExt`](../interfaces/RecordExt.md)\>
+▸ **getRecord**(`domain`): `Promise`<``null`` \| [`RecordExt`](../interfaces/RecordExt.md)\>
 
 Get record in registry canister.
 
@@ -216,9 +191,9 @@ return record data object
 
 ___
 
-### getDomainResolver
+### getResolver
 
-▸ **getDomainResolver**(`domain`): `Promise`<``null`` \| `Principal`\>
+▸ **getResolver**(`domain`): `Promise`<``null`` \| `Principal`\>
 
 Get domain resolver in registry canister.
 
@@ -236,9 +211,9 @@ return the Principal id resolved from this name, return null if not set.
 
 ___
 
-### getDomainTTL
+### getTTL
 
-▸ **getDomainTTL**(`domain`): `Promise`<``null`` \| `bigint`\>
+▸ **getTTL**(`domain`): `Promise`<``null`` \| `bigint`\>
 
 Get domain ttl in registry canister.
 
@@ -254,22 +229,23 @@ Get domain ttl in registry canister.
 
 ___
 
-### isApproveForAll
+### getUserNames
 
-▸ **isApproveForAll**(`owner`, `operator`): `Promise`<`boolean`\>
+▸ **getUserNames**(`user`): `Promise`<[`List`](../modules/Domain.md#list)\>
 
-get approve for all.
+Get user's all registed domains in registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `owner` | `Principal` |
-| `operator` | `Principal` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `user` | `Principal` | represents user indentity |
 
 #### Returns
 
-`Promise`<`boolean`\>
+`Promise`<[`List`](../modules/Domain.md#list)\>
+
+return record data object
 
 ___
 
@@ -289,6 +265,45 @@ get approve for domain.
 #### Returns
 
 `Promise`<`boolean`\>
+
+___
+
+### isApprovedForAll
+
+▸ **isApprovedForAll**(`owner`, `operator`): `Promise`<`boolean`\>
+
+get approve for all.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `owner` | `Principal` |
+| `operator` | `Principal` |
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+___
+
+### recordExists
+
+▸ **recordExists**(`domain`): `Promise`<`boolean`\>
+
+Check if domain record exist in registry canister.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+return whether its record exists
 
 ___
 
@@ -313,9 +328,9 @@ This function needs to be called before operate with registry canister.
 
 ___
 
-### setDomainController
+### setController
 
-▸ **setDomainController**(`domain`, `controller`): `Promise`<`void`\>
+▸ **setController**(`domain`, `controller`): `Promise`<`void`\>
 
 set domain controller according to domain.
 
@@ -334,9 +349,9 @@ return nothing
 
 ___
 
-### setDomainOwner
+### setOwner
 
-▸ **setDomainOwner**(`domain`, `owner`): `Promise`<`void`\>
+▸ **setOwner**(`domain`, `owner`): `Promise`<`void`\>
 
 set domain owner according to domain.
 
@@ -346,48 +361,6 @@ set domain owner according to domain.
 | :------ | :------ |
 | `domain` | `string` |
 | `owner` | `Principal` |
-
-#### Returns
-
-`Promise`<`void`\>
-
-return nothing
-
-___
-
-### setDomainResolver
-
-▸ **setDomainResolver**(`domain`, `resolver`): `Promise`<`void`\>
-
-set domain resolver according to domain.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `resolver` | `Principal` |
-
-#### Returns
-
-`Promise`<`void`\>
-
-return nothing
-
-___
-
-### setDomainTTL
-
-▸ **setDomainTTL**(`domain`, `ttl`): `Promise`<`void`\>
-
-set domain ttl according to domain.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `ttl` | `bigint` |
 
 #### Returns
 
@@ -408,6 +381,27 @@ set record according to domain.
 | Name | Type |
 | :------ | :------ |
 | `params` | [`RecordParams`](../modules/ICNSRegistryController.md#recordparams) |
+
+#### Returns
+
+`Promise`<`void`\>
+
+return nothing
+
+___
+
+### setResolver
+
+▸ **setResolver**(`domain`, `resolver`): `Promise`<`void`\>
+
+set domain resolver according to domain.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `domain` | `string` |
+| `resolver` | `Principal` |
 
 #### Returns
 
@@ -481,6 +475,27 @@ return nothing
 
 ___
 
+### setTTL
+
+▸ **setTTL**(`domain`, `ttl`): `Promise`<`void`\>
+
+set domain ttl according to domain.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `domain` | `string` |
+| `ttl` | `bigint` |
+
+#### Returns
+
+`Promise`<`void`\>
+
+return nothing
+
+___
+
 ### transfer
 
 ▸ **transfer**(`domain`, `to`): `Promise`<`void`\>
@@ -526,7 +541,7 @@ This function needs to be called before operate with registry canister.
 
 ### constructor
 
-• **new ICNSregistryController**(`registryActor?`)
+• **new ICNSRegistryController**(`registryActor?`)
 
 Create an instance that communicates with icns registry canister.
 Some of the functions uses the actor agent identity to identify the user that is interacting.

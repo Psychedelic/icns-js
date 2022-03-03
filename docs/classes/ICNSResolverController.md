@@ -47,16 +47,10 @@ Some of the functions uses the actor agent identity to identify the user that is
 
 ### getAgentPrincipal
 
-▸ **getAgentPrincipal**(`actor`): `Promise`<`Principal`\>
+▸ **getAgentPrincipal**(): `Promise`<`Principal`\>
 
 Get the principal of the agent.
 It is going to throw if the principal is anonymous.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `actor` | `Actor` |
 
 #### Returns
 
@@ -68,17 +62,19 @@ ___
 
 ▸ **getHost**(`domain`): `Promise`<`string` \| `Principal`\>
 
-Get host according to domain.
+Get host record.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
 
 #### Returns
 
 `Promise`<`string` \| `Principal`\>
+
+return host of a domain name
 
 ___
 
@@ -86,13 +82,13 @@ ___
 
 ▸ **getPrincipalId**(`domain`): `Promise`<`Principal`\>
 
-Get principal id according to domain.
+Get principal id by name.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
 
 #### Returns
 
@@ -104,17 +100,19 @@ ___
 
 ▸ **getUserDefaultInfo**(`domain`): `Promise`<`void`\>
 
-Get user default info setted in resolver canister.
+Get user default info in resolver canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
 
 #### Returns
 
 `Promise`<`void`\>
+
+return nothing
 
 ___
 
@@ -126,12 +124,12 @@ set default info according to domain.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `type` | [`DefaultInfo`](../enums/ICNSResolverController.DefaultInfo.md) |
-| `value` | `string` |
-| `extensionType?` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
+| `type` | [`DefaultInfo`](../enums/ICNSResolverController.DefaultInfo.md) | represents which type info user wants to set |
+| `value` | `string` | represents the value |
+| `extensionType?` | `string` | represents the extra type user wants to set |
 
 #### Returns
 
@@ -143,14 +141,14 @@ ___
 
 ▸ **setHost**(`domain`, `params?`): `Promise`<`void`\>
 
-set host according to domain.
+set host record.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `params?` | [`HostParams`](../modules/ICNSResolverController.md#hostparams) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | represents user domain, such as: test.icp |
+| `params?` | [`HostParams`](../modules/ICNSResolverController.md#hostparams) | host type |
 
 #### Returns
 

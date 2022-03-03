@@ -1,4 +1,4 @@
-import { Constants, DefaultInfoExt, idlResolverFactory } from "@/declarations";
+import { ICNSConstants, DefaultInfoExt, idlResolverFactory } from "@/declarations";
 import { Actor } from "@dfinity/agent";
 import { Principal } from "@dfinity/principal";
 import { ActorAdapter, createRegistryActor, ResolverActor } from "../..";
@@ -19,7 +19,7 @@ export class ICNSResolverController {
    */
   constructor(
     private resolverActor: ResolverActor = ActorAdapter.createAnonymousActor<ResolverActor>(
-      Constants.canisterIds.resolver,
+      ICNSConstants.canisterIds.resolver,
       idlResolverFactory
     )
   ) {}

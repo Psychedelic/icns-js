@@ -1,5 +1,5 @@
 import {
-  Constants,
+  ICNSConstants,
   Domain,
   RecordExt,
 } from '@/declarations';
@@ -27,7 +27,7 @@ export class ICNSRegistryController {
    */
   constructor(
     private registryActor: RegistryActor = ActorAdapter.createAnonymousActor<RegistryActor>(
-      Constants.canisterIds.registry,
+      ICNSConstants.canisterIds.registry,
       idlRegistryFactory
     )
   ) { }

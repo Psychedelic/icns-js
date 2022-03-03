@@ -12,7 +12,7 @@ This class is responsible for handling all the requests related to the ICNS regi
 - [domainIsAvailable](ICNSRegistrarController.md#domainisavailable)
 - [getAgentPrincipal](ICNSRegistrarController.md#getagentprincipal)
 - [getAuciton](ICNSRegistrarController.md#getauciton)
-- [getICNSInfo](ICNSRegistrarController.md#geticnsinfo)
+- [getRegistrarInfo](ICNSRegistrarController.md#getregistrarinfo)
 - [getUserBalance](ICNSRegistrarController.md#getuserbalance)
 - [placeBid](ICNSRegistrarController.md#placebid)
 - [renew](ICNSRegistrarController.md#renew)
@@ -87,16 +87,10 @@ ___
 
 ### getAgentPrincipal
 
-▸ **getAgentPrincipal**(`actor`): `Promise`<`Principal`\>
+▸ **getAgentPrincipal**(): `Promise`<`Principal`\>
 
 Get the principal of the agent.
 It is going to throw if the principal is anonymous.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `actor` | `Actor` |
 
 #### Returns
 
@@ -122,9 +116,9 @@ Verify domain is onAuction or not.
 
 ___
 
-### getICNSInfo
+### getRegistrarInfo
 
-▸ **getICNSInfo**(): `Promise`<[`Info`](../interfaces/Info.md)\>
+▸ **getRegistrarInfo**(): `Promise`<[`Info`](../interfaces/Info.md)\>
 
 Get the Common Info from registrar canister.
 

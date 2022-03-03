@@ -1,6 +1,6 @@
 import {
   AuctionExt,
-  Constants,
+  ICNSConstants,
   Info,
   Token,
   Types
@@ -31,7 +31,7 @@ export class ICNSRegistrarController {
    */
   constructor(
     private registrarActor: RegistrarActor = ActorAdapter.createAnonymousActor<RegistrarActor>(
-      Constants.canisterIds.registrar,
+      ICNSConstants.canisterIds.registrar,
       idlRegistrarFactory
     )
   ) { }
@@ -134,7 +134,7 @@ export class ICNSRegistrarController {
     const principal = await this.getAgentPrincipal(); //getAgentPrincipal
     const tokenDecimals = await tokenActor.decimals();
 
-    const registrarPrincipal = Principal.fromText(Constants.canisterIds.registrar);
+    const registrarPrincipal = Principal.fromText(ICNSConstants.canisterIds.registrar);
     const parsedAmount = toBigNumber(amount).removeDecimals(tokenDecimals);
 
     const parsedAllowance = toBigNumber(
@@ -165,9 +165,9 @@ export class ICNSRegistrarController {
       throw new Error('Wrong domain name')
     const name = removeIcpSuffix(domain)
 
-    await this.approve({ tokenId: Constants.canisterIds.WICP, amount });
+    await this.approve({ tokenId: ICNSConstants.canisterIds.WICP, amount });
 
-    const parsedAmount = toBigNumber(amount).removeDecimals(Constants.wicpDecimal);
+    const parsedAmount = toBigNumber(amount).removeDecimals(ICNSConstants.wicpDecimal);
 
     const result = await this.registrarActor.placeBid(
       name,
@@ -201,7 +201,7 @@ export class ICNSRegistrarController {
     let unitPrice = name.length >= renewPrice.length ? renewPrice[renewPrice.length - 1] : renewPrice[name.length - 1]
     let amount = (Number(duration) * unitPrice).toString()
 
-    await this.approve({ tokenId: Constants.canisterIds.WICP, amount });
+    await this.approve({ tokenId: ICNSConstants.canisterIds.WICP, amount });
 
     const result = await this.registrarActor.renew(
       name,

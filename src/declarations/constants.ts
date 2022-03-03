@@ -1,7 +1,7 @@
 /**
- * Constants values used on ICNS-js library.
+ * ICNSConstants values used on ICNS-js library.
  */
-export const Constants = {
+export const ICNSConstants = {
   // URL used for communicating with IC
   host: process.env.HOST || "https://ic0.app",
 
@@ -20,6 +20,5 @@ export const Constants = {
     favorite: process.env.FAVORITE_CANISTER_ID || 
     'pe5bb-piaaa-aaaan-qaa7q-cai',
   },
-
   wicpDecimal: 8
 };
