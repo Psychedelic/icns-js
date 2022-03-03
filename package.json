@@ -32,6 +32,11 @@
     "test:coverage": "jest --coverage",
     "docs": "npx typedoc  --readme none --disableSources --sort static-first --sort alphabetical --plugin typedoc-plugin-markdown --hideBreadcrumbs --out docs src/index.ts"
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!lodash-es)"
+    ]
+  },
   "dependencies": {
     "@dfinity/agent": "^0.10.2",
     "@dfinity/candid": "^0.10.2",

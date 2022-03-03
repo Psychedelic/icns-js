@@ -1,11 +1,11 @@
 import {
   AuctionExt,
   Constants,
-  idlRegistrarFactory,
   Info,
   Token,
   Types
 } from '@/declarations';
+import {idlRegistrarFactory} from '@/declarations/did/registrar.did'
 import { toBigNumber } from '@/utils';
 import { Actor } from '@dfinity/agent';
 import { Principal } from '@dfinity/principal';
@@ -131,7 +131,7 @@ export class ICNSRegistrarController {
       actorAdapter: ActorAdapter.adapterOf(this.registrarActor),
     });
 
-    const principal = await this.getAgentPrincipal(tokenActor);
+    const principal = await this.getAgentPrincipal(); //getAgentPrincipal
     const tokenDecimals = await tokenActor.decimals();
 
     const registrarPrincipal = Principal.fromText(Constants.canisterIds.registrar);
@@ -191,7 +191,7 @@ export class ICNSRegistrarController {
       throw new Error('Wrong domain name')
     const name = removeIcpSuffix(domain)
 
-    await this.getICNSInfo()
+    await this.getRegistrarInfo()
 
     let renewPrice = this.info?.renewPrices
 
@@ -222,7 +222,7 @@ export class ICNSRegistrarController {
       throw new Error('Wrong domain name')
     const name = removeIcpSuffix(domain)
 
-    await this.getAgentPrincipal(this.registrarActor);
+    await this.getAgentPrincipal(); //this.registrarActor
 
     const result = await this.registrarActor.claimName(name);
 
@@ -236,7 +236,7 @@ export class ICNSRegistrarController {
    */
   async withdraw(): Promise<void> {
 
-    await this.getAgentPrincipal(this.registrarActor);
+    await this.getAgentPrincipal(); //this.registrarActor
 
     const result = await this.registrarActor.withdraw();
 
