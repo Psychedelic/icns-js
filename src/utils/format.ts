@@ -1,5 +1,6 @@
 import { Types } from '@/declarations';
 import BigNumber from 'bignumber.js';
+import {getCrc32} from '@dfinity/principal/lib/esm/utils/getCrc'
 
 const suffix = '.icp'
 
@@ -91,8 +92,8 @@ export const formatAmount = (amount: Types.Amount): string => {
 
 export const VerifyDomainName = (domain: string | undefined): boolean => {
   try {
-    if (!domain || domain.length === 0)
-      throw new Error('domain can not be null')
+    if (!domain || domain.length < 3 || domain.length > 64)
+      throw new Error('domain length should be between 3 and 64')
     const reg = /^[a-z0-9\-]+$/;
     const name = removeIcpSuffix(domain)
     if (!reg.test(name))
@@ -120,4 +121,18 @@ export const addIcpSuffix = (name: string | undefined) => {
     return name + suffix
   else
     return name
+}
+
+export const verifyAccountId = (hexString: string) => {
+  if (hexString.length !== 64){
+    throw new Error('Invalid account id: wrong length')
+  }
+  // crc part
+  var crc = Number('0x'+ hexString.slice(0, 8))
+  // id part
+  var id = Uint8Array.from(Buffer.from((hexString).slice(8), 'hex'))
+  if (crc !== getCrc32(id))
+    throw new Error('Invalid account id: crc check error.')
+  else 
+    return true
 }
