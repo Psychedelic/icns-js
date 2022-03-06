@@ -35,9 +35,10 @@ export class ICNSRegistryController {
   /**
    * Get the principal of the agent.
    * It is going to throw if the principal is anonymous.
-   * @returns {Promise<Principal>} return Principal stored in agent
+   * @internal
+   * @returns {Promise<Principal>} Return Principal stored in agent
    */
-  async getAgentPrincipal(): Promise<Principal> {
+  private async getAgentPrincipal(): Promise<Principal> {
     const agent = Actor.agentOf(this.registryActor);
     if (!agent) throw new Error('Agent principal not found');
 
@@ -51,8 +52,8 @@ export class ICNSRegistryController {
 
   /**
     * Get record in registry canister.
-    * @param {string} domain represents user domain, such as: test.icp
-    * @returns {Promise<RecordExt | null>} return record data object 
+    * @param {string} domain Represents user domain, such as: 'test.icp'
+    * @returns {Promise<RecordExt | null>} Return record data object. Return null if not set.
     */
   async getRecord(domain: string): Promise<RecordExt | null> {
     if (!VerifyDomainName(domain))
@@ -64,8 +65,8 @@ export class ICNSRegistryController {
 
   /**
     * Get user's all registed domains in registry canister.
-    * @param {Principal} user represents user indentity
-    * @returns {Promise<Domain.List>} return record data object 
+    * @param {Principal} user Represents the Principal id of the user.
+    * @returns {Promise<Domain.List>} Return record data object.
     */
   async getUserNames(user: Principal): Promise<Domain.List> {
     const response = await this.registryActor.getUserDomains(user)
@@ -77,8 +78,8 @@ export class ICNSRegistryController {
 
   /**
     * Get domain resolver in registry canister.
-    * @param {string} domain represents user domain, such as: test.icp
-    * @returns {Promise<Principal | null>} return the Principal id resolved from this name, return null if not set.
+    * @param {string} domain Represents user domain, such as: 'test.icp'
+    * @returns {Promise<Principal | null>} Return the Principal id resolved from this domain name, return null if not set.
     */
   async getResolver(domain: string): Promise<Principal | null> {
     if (!VerifyDomainName(domain))
@@ -90,8 +91,8 @@ export class ICNSRegistryController {
 
   /**
     * Get domain owner in registry canister.
-    * @param {string} domain represents user domain, such as: test.icp
-    * @returns {Promise<Principal | null>} return the Principal id of this name's owner, return null if not set.
+    * @param {string} domain Represents user domain, such as: 'test.icp'
+    * @returns {Promise<Principal | null>} Return the Principal id of this name's owner, return null if not set.
     */
   async getOwner(domain: string): Promise<Principal | null> {
     if (!VerifyDomainName(domain))
@@ -103,8 +104,8 @@ export class ICNSRegistryController {
 
   /**
     * Get domain controller in registry canister.
-    * @param {string} domain represents user domain, such as: test.icp
-    * @returns {Promise<Principal  | null>} return the Principal id of this name's controller, return null if not set.
+    * @param {string} domain Represents user domain, such as: 'test.icp'
+    * @returns {Promise<Principal  | null>} Return the Principal id of this name's controller, return null if not set.
     */
   async getController(domain: string): Promise<Principal | null> {
     if (!VerifyDomainName(domain))
@@ -116,7 +117,7 @@ export class ICNSRegistryController {
 
   /**
     * Get domain ttl in registry canister.
-    * @param {string} domain represents user domain, such as: test.icp
+    * @param {string} domain Represents user domain, such as: 'test.icp'
     * @returns {Promise<bigint | null>} 
     */
   async getTTL(domain: string): Promise<bigint | null> {
@@ -129,8 +130,8 @@ export class ICNSRegistryController {
 
   /**
     * Get domain expiry in registry canister.
-    * @param {string} domain represents user domain, such as: test.icp
-    * @returns {Promise<bigint | null>} return the expiry time of this domain name, return null if not timed.
+    * @param {string} domain Represents user domain, such as: 'test.icp'.
+    * @returns {Promise<bigint | null>} Return the expiry time of this domain name, return null if not timed.
     */
   async getExpiry(domain: string): Promise<bigint | null> {
     if (!VerifyDomainName(domain))
@@ -142,8 +143,8 @@ export class ICNSRegistryController {
 
   /**
     * Check if domain record exist in registry canister.
-    * @param {string} domain represents user domain, such as: test.icp
-    * @returns {Promise<boolean>} return whether its record exists
+    * @param {string} domain Represents user domain, such as: 'test.icp'
+    * @returns {Promise<boolean>} Return whether its record exists
     */
   async recordExists(domain: string): Promise<boolean> {
     if (!VerifyDomainName(domain))
@@ -154,9 +155,9 @@ export class ICNSRegistryController {
   }
 
   /**
-   * set record according to domain.
-   * @param {ICNSRegistryController.RecordParams} params 
-   * @returns {Promise<void>} return nothing
+   * Set record according to domain.
+   * @param {ICNSRegistryController.RecordParams} params The data of the record.
+   * @returns {Promise<void>} Return nothing.
    */
   async setRecord(params: ICNSRegistryController.RecordParams): Promise<void> {
     if (!VerifyDomainName(params.node))
@@ -168,9 +169,9 @@ export class ICNSRegistryController {
   }
 
   /**
-   * set subnoderecord according to domain.
-   * @param {ICNSRegistryController.RecordParams} params recoed type
-   * @returns {Promise<void>} return nothing
+   * Set subnoderecord according to domain.
+   * @param {ICNSRegistryController.RecordParams} params The data of the record.
+   * @returns {Promise<void>} Return nothing.
    */
   async setSubnodeRecord(params: ICNSRegistryController.RecordParams): Promise<void> {
     if (!VerifyDomainName(params.node))
@@ -182,10 +183,10 @@ export class ICNSRegistryController {
   }
 
   /**
-   * set domain owner according to domain.
-   * @param {domain} represents user domain, such as: test.icp
-   * @param {owner} represents new owner
-   * @returns {Promise<void>} return nothing
+   * Set domain owner according to domain.
+   * @param {string} domain Represents user domain, such as: 'test.icp'.
+   * @param {Principal} owner Represents the Principal id of the new owner.
+   * @returns {Promise<void>} Return nothing
    */
   async setOwner(domain: string, owner: Principal): Promise<void> {
     if (!VerifyDomainName(domain))
@@ -197,10 +198,10 @@ export class ICNSRegistryController {
   }
 
   /**
-   * set domain controller according to domain.
-   * @param {domain} represents user domain, such as: test.icp
-   * @param {controller} represents new controller
-   * @returns {Promise<void>} return nothing
+   * Set domain controller according to domain.
+   * @param {Principal} domain Represents user domain, such as: 'test.icp'.
+   * @param {Principal} controller Represents new controller.
+   * @returns {Promise<void>} Return nothing.
    */
   async setController(domain: string, controller: Principal): Promise<void> {
     if (!VerifyDomainName(domain))
@@ -212,10 +213,10 @@ export class ICNSRegistryController {
   }
 
   /**
-    * set domain resolver according to domain.
-    * @param {domain} represents user domain, such as: test.icp
-    * @param {resolver} represents new resolver
-    * @returns {Promise<void>} return nothing
+    * Set domain's resolver according to domain.
+    * @param {string} domain Represents user domain, such as: 'test.icp'.
+    * @param {Principal} resolver Represents new resolver.
+    * @returns {Promise<void>} Return nothing.
     */
   async setResolver(domain: string, resolver: Principal): Promise<void> {
     if (!VerifyDomainName(domain))
@@ -228,41 +229,41 @@ export class ICNSRegistryController {
 
   /**
    * set domain ttl according to domain.
-   * @param {domain} represents user domain, such as: test.icp
-   * @param {ttl} represents new ttl
-   * @returns {Promise<void>} return nothing
+   * @param {string} domain Represents the domain name, such as: 'test.icp'.
+   * @param {bigint} ttl Represents the new ttl.
+   * @returns {Promise<void>} Return nothing.
    */
   async setTTL(domain: string, ttl: bigint): Promise<void> {
     if (!VerifyDomainName(domain))
       throw new Error('name format error')
-    const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
+    const name = addIcpSuffix(domain) // guarantee the domain name with '.icp' suffix
     await this.getAgentPrincipal() // get pulg wallet identity this.registryActor
     const result = await this.registryActor.setTTL(name, ttl)
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
 
   /**
-    * set sub domain owner according to domain.
-    * @param {domain} represents user domain, such as: test.icp
-    * @param {sublabel} represents sublabel, such as: hello.test.icp
-    * @param {owner} represents new owner
-    * @returns {Promise<void>} return nothing
+    * Set sub domain owner according to domain.
+    * @param {string} domain Represents user domain, such as: 'test.icp'.
+    * @param {string} sublabel Represents sublabel, such as: 'hello.test.icp'.
+    * @param {Principal} owner Represents the Principal id of the thenew owner.
+    * @returns {Promise<void>} Return nothing.
     */
   async setSubDomainOwner(domain: string, sublabel: string, owner: Principal): Promise<void> {
     if (!VerifyDomainName(domain))
       throw new Error('name format error')
-    const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
+    const name = addIcpSuffix(domain) // guarantee the domain name with '.icp' suffix
     await this.getAgentPrincipal() // get pulg wallet identity this.registryActor
     const result = await this.registryActor.setSubnodeOwner(name, sublabel, owner)
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
 
   /**
-   * set sub domain expiry according to domain.
-   * @param {domain} represents user domain, such as: test.icp
-   * @param {sublabel} represents sublabel, such as: hello.test.icp
-   * @param {newExpiry} represents new expiry
-   * @returns {Promise<void>} return nothing
+   * Set sub domain expiry.
+   * @param {string} domain Represents user domain, such as: 'test.icp'.
+   * @param {string} sublabel Represents sublabel, such as: 'hello.test.icp'.
+   * @param {bigint} newExpiry Represents the new expiry.
+   * @returns {Promise<void>} Return nothing.
    */
   async setSubDomainExpiry(domain: string, sublabel: string, newExpiry: bigint): Promise<void> {
     if (!VerifyDomainName(domain))
@@ -278,9 +279,9 @@ export class ICNSRegistryController {
   // =========================================================================================== //
 
   /**
-   * get approve for all.
-   * @param {owner} represents user identity
-   * @param {operator} represents who can transfer owner's domains
+   * Get whether someone is approved for all domains of an owner.
+   * @param {Principal} owner Represents the Principal id of the owner.
+   * @param {Principal} operator Represents the principal id of the one to get checked.
    * @returns {Promise<boolean>}
    */
   async isApprovedForAll(owner: Principal, operator: Principal): Promise<boolean> {
@@ -288,9 +289,9 @@ export class ICNSRegistryController {
   }
 
   /**
-   * get approve for domain.
-   * @param {domain} represents domain
-   * @param {who} represents who gets approved
+   * Get whether someone is approved for specific domain.
+   * @param {string} domain Represents domain name.
+   * @param {Principal} who Represents the principal id of the one to get checked.
    * @returns {Promise<boolean>}
    */
   async isApproved(domain: string, who: Principal): Promise<boolean> {
@@ -301,9 +302,9 @@ export class ICNSRegistryController {
   }
 
   /**
-  * get approv for domain.
-  * @param {domain} represents domain
-  * @returns {Promise<Principal | null>}
+  * get approved operator of a domain.
+  * @param {string} domain Represents domain name.
+  * @returns {Promise<Principal | null>} Return Principal id of the approved operator. Return null if no one got approved.
   */
   async getApproved(domain: string): Promise<Principal | null> {
     if (!VerifyDomainName(domain))
@@ -315,7 +316,7 @@ export class ICNSRegistryController {
 
   /**
   * get user's domain.
-  * @param {owner} represents user identity
+  * @param {owner} Represents user identity
   * @returns {Promise<bigint>}
   */
   async balanceOf(owner: Principal): Promise<bigint> {
@@ -327,8 +328,8 @@ export class ICNSRegistryController {
    * Approve transfers domian from registrar canister.
    * This function uses the actor agent identity.
    * This function needs to be called before operate with registry canister.
-   * @param {domain} represents domain
-   * @param {operator} represents approve who can operate owner's domain
+   * @param {string} domain Represents domain name to be approved
+   * @param {Principal} operator Represents approve who can operate owner's domain.
    * @returns {Promise<void>}
    */
   async approve(
@@ -350,8 +351,8 @@ export class ICNSRegistryController {
    * Approve transfers domain from registrar canister.
    * This function uses the actor agent identity.
    * This function needs to be called before operate with registry canister.
-   * @param {approved} represents whether approve operator transfer all domians
-   * @param {operator} represents approve who can operate owner's domain
+   * @param {boolean} approved Represents whether the approve operator are approved for all domians
+   * @param {Principal} operator Represents the Principal id of the operator
    * @returns {Promise<void>}
    */
   async setApprovalForAll(
@@ -373,8 +374,8 @@ export class ICNSRegistryController {
    * transfers domain from owner to others.
    * This function uses the actor agent identity.
    * This function needs to be called before operate with registry canister.
-   * @param {domain} represents domain
-   * @param {to} represents who will get the domain
+   * @param {string} domain Represents domain name 
+   * @param {Principal} to Represents who will get the domain
    * @returns {Promise<void>}
    */
   async transfer(
@@ -401,9 +402,9 @@ export class ICNSRegistryController {
    * allow operator transfers domain from owner to others.
    * This function uses the actor agent identity.
    * This function needs to be called before operate with registry canister.
-   * @param {domain} represents domain
-   * @param {from} represents domain owner
-   * @param {to} represents who will get the domain
+   * @param {string} domain Represents domain name
+   * @param {Principal} from Represents the domain's owner
+   * @param {Principal} to Represents who will get the domain
    * @returns {Promise<void>}
    */
   async transferFrom(
@@ -438,7 +439,7 @@ export namespace ICNSRegistryController {
 
   /**
    * Type definition for params of the record function.
-   * @param {RecordParams} represents record infos
+   * @param {RecordParams} Represents record infos
    */
   export type RecordParams = {
     node: string,

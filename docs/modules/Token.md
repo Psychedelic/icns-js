@@ -14,11 +14,11 @@
 
 Type definition for a token balance.
 
-**`param`** represents the user's amount stayed on ICNS
+**`param`** Represents the user's amount stayed on ICNS
 
-**`param`** represents the user's amount from plug wallet
+**`param`** Represents the user's amount from plug wallet
 
-**`param`** represents the sum of icns and plug
+**`param`** Represents the sum of icns and plug
 
 #### Type declaration
 

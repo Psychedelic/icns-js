@@ -10,7 +10,6 @@ This class is responsible for handling all the requests related to the ICNS regi
 - [approve](ICNSRegistrarController.md#approve)
 - [claim](ICNSRegistrarController.md#claim)
 - [domainIsAvailable](ICNSRegistrarController.md#domainisavailable)
-- [getAgentPrincipal](ICNSRegistrarController.md#getagentprincipal)
 - [getAuciton](ICNSRegistrarController.md#getauciton)
 - [getRegistrarInfo](ICNSRegistrarController.md#getregistrarinfo)
 - [getUserBalance](ICNSRegistrarController.md#getuserbalance)
@@ -30,7 +29,7 @@ This class is responsible for handling all the requests related to the ICNS regi
 
 ### approve
 
-▸ **approve**(`params`): `Promise`<`void`\>
+▸ **approve**(`__namedParameters`): `Promise`<`void`\>
 
 Approve transfers from token to registrar canister.
 This function uses the actor agent identity.
@@ -40,7 +39,7 @@ This function needs to be called before operate with registrar canister.
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`ApproveParams`](../modules/ICNSRegistrarController.md#approveparams) |
+| `__namedParameters` | [`ApproveParams`](../modules/ICNSRegistrarController.md#approveparams) |
 
 #### Returns
 
@@ -57,9 +56,9 @@ This function uses the actor agent identity.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | domain name to be claimed |
 
 #### Returns
 
@@ -82,19 +81,6 @@ Verify domain available or not.
 #### Returns
 
 `Promise`<`string` \| `boolean`\>
-
-___
-
-### getAgentPrincipal
-
-▸ **getAgentPrincipal**(): `Promise`<`Principal`\>
-
-Get the principal of the agent.
-It is going to throw if the principal is anonymous.
-
-#### Returns
-
-`Promise`<`Principal`\>
 
 ___
 
@@ -148,7 +134,7 @@ ___
 
 ### placeBid
 
-▸ **placeBid**(`params`): `Promise`<`void`\>
+▸ **placeBid**(`__namedParameters`): `Promise`<`void`\>
 
 Place Bid into canister.
 This function uses the actor agent identity.
@@ -157,7 +143,7 @@ This function uses the actor agent identity.
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`PlaceBidParams`](../modules/ICNSRegistrarController.md#placebidparams) |
+| `__namedParameters` | [`PlaceBidParams`](../modules/ICNSRegistrarController.md#placebidparams) |
 
 #### Returns
 
@@ -167,7 +153,7 @@ ___
 
 ### renew
 
-▸ **renew**(`params`): `Promise`<`void`\>
+▸ **renew**(`__namedParameters`): `Promise`<`void`\>
 
 Renew into canister.
 This function uses the actor agent identity.
@@ -176,7 +162,7 @@ This function uses the actor agent identity.
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`RenewParams`](../modules/ICNSRegistrarController.md#renewparams) |
+| `__namedParameters` | [`RenewParams`](../modules/ICNSRegistrarController.md#renewparams) |
 
 #### Returns
 

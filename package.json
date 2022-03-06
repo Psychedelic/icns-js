@@ -1,6 +1,6 @@
 {
   "name": "icns-js",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "icns-js is a library for interacting with ICNS canisters",
   "main": "dist/index.js",
   "repository": "https://github.com/icns-id/icns-js.git",
@@ -30,7 +30,7 @@
     "test": "jest --watch",
     "test:ci": "jest --silent",
     "test:coverage": "jest --coverage",
-    "docs": "npx typedoc  --readme none --disableSources --sort static-first --sort alphabetical --plugin typedoc-plugin-markdown --hideBreadcrumbs --out docs src/index.ts"
+    "docs": "npx typedoc --readme none --disableSources --sort static-first --sort alphabetical --plugin typedoc-plugin-markdown --hideBreadcrumbs --out docs src/index.ts --excludeInternal"
   },
   "jest": {
     "transformIgnorePatterns": [

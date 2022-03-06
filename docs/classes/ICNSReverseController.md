@@ -11,7 +11,6 @@ This class is responsible for handling all the requests related to the ICNS reve
 
 ### Methods
 
-- [getAgentPrincipal](ICNSReverseController.md#getagentprincipal)
 - [getReverseName](ICNSReverseController.md#getreversename)
 - [setReverseName](ICNSReverseController.md#setreversename)
 
@@ -32,21 +31,6 @@ Some of the functions uses the actor agent identity to identify the user that is
 
 ## Methods
 
-### getAgentPrincipal
-
-▸ **getAgentPrincipal**(): `Promise`<`Principal`\>
-
-Get the principal of the agent.
-It is going to throw if the principal is anonymous.
-
-#### Returns
-
-`Promise`<`Principal`\>
-
-return Principal stored in agent
-
-___
-
 ### getReverseName
 
 ▸ **getReverseName**(`owner`): `Promise`<`string`\>
@@ -57,13 +41,13 @@ get user's domain.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `owner` | `Principal` | represents user identity |
+| `owner` | `Principal` | Represents user identity |
 
 #### Returns
 
 `Promise`<`string`\>
 
-represents  user principal => domain
+Represents  user principal => domain
 
 ___
 
@@ -77,7 +61,7 @@ set reverse name according to domain.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
 
 #### Returns
 

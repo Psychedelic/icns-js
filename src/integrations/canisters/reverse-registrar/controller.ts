@@ -33,9 +33,10 @@ export class ICNSReverseController {
   /**
    * Get the principal of the agent.
    * It is going to throw if the principal is anonymous.
-   * @returns {Promise<Principal>} return Principal stored in agent
+   * @internal
+   * @returns {Promise<Principal>} Return Principal of the agent
    */
-  async getAgentPrincipal(): Promise<Principal> {
+   private async getAgentPrincipal(): Promise<Principal> {
     const agent = Actor.agentOf(this.reverseActor);
     if (!agent) throw new Error('Agent principal not found');
 
@@ -49,7 +50,7 @@ export class ICNSReverseController {
 
   /**
    * set reverse name according to domain.
-   * @param {string} domain represents user domain, such as: test.icp
+   * @param {string} domain Represents user domain, such as: 'test.icp'
    * @returns {Promise<void>} domain => user principal
    */
   async setReverseName(domain: string): Promise<void> {
@@ -65,8 +66,8 @@ export class ICNSReverseController {
 
   /**
    * get user's domain.
-   * @param {Principal} owner represents user identity
-   * @returns {Promise<string>} represents  user principal => domain
+   * @param {Principal} owner Represents user identity
+   * @returns {Promise<string>} Represents  user principal => domain
    */
   async getReverseName(owner: Principal): Promise<string> {
     const result =  await this.reverseActor.getName(owner)

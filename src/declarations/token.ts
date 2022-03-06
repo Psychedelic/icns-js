@@ -4,9 +4,9 @@ export namespace Token {
 
   /**
    * Type definition for a token balance.
-   * @param {BigNumber} icns represents the user's amount stayed on ICNS
-   * @param plug represents the user's amount from plug wallet
-   * @param total represents the sum of icns and plug
+   * @param {BigNumber} icns Represents the user's amount stayed on ICNS
+   * @param plug Represents the user's amount from plug wallet
+   * @param total Represents the sum of icns and plug
    */
   export type Balance = {
     icns: BigNumber;

@@ -74,7 +74,7 @@ export class ICNSRegistrarController {
 
   /**
    * Get one token balance for a given principal id (wicp as default).
-   * @param {principalId} params represents user identity
+   * @param {principalId} params Represents user identity
    * @returns {Promise<Token.Balance>}
    */
   async getUserBalance(principalId: string): Promise<Token.Balance> {
@@ -100,9 +100,10 @@ export class ICNSRegistrarController {
   /**
    * Get the principal of the agent.
    * It is going to throw if the principal is anonymous.
+   * @internal
    * @returns {Promise<Principal>}
    */
-  async getAgentPrincipal(): Promise<Principal> {
+  private async getAgentPrincipal(): Promise<Principal> {
     const agent = Actor.agentOf(this.registrarActor);
     if (!agent) throw new Error('Agent principal not found');
 
@@ -118,8 +119,9 @@ export class ICNSRegistrarController {
    * Approve transfers from token to registrar canister.
    * This function uses the actor agent identity.
    * This function needs to be called before operate with registrar canister.
-   * @param {ICNSRegistrarController.ApproveParams} params
-   * @returns {Promise<void>}
+   * @param {Types.Amount} amount the amount of the token to be approved
+   * @param {string} tokenId the canister id of the token to be approved
+   * @returns {Promise<void>} 
    */
   async approve({
     tokenId,
@@ -154,7 +156,8 @@ export class ICNSRegistrarController {
   /**
    * Place Bid into canister.
    * This function uses the actor agent identity.
-   * @param {ICNSRegistrarController.PlaceBidParams} params
+   * @param {Types.Amount} amount the amount of this bid.
+   * @param {string} domian domain name, 'hello' for example.
    * @returns {Promise<void>}
    */
   async placeBid({
@@ -180,7 +183,8 @@ export class ICNSRegistrarController {
   /**
  * Renew into canister.
  * This function uses the actor agent identity.
- * @param {ICNSRegistrarController.RenewParams} params
+ * @param {Types.Number} duration duration of this renew, 1 for 1 year.
+ * @param {string} domain domain name to be renewed, 'hello' for example.
  * @returns {Promise<void>}
  */
   async renew({
@@ -214,7 +218,7 @@ export class ICNSRegistrarController {
   /**
  * Claim into canister.
  * This function uses the actor agent identity.
- * @param {String} params
+ * @param {String} domain domain name to be claimed
  * @returns {Promise<void>}
  */
   async claim(domain: string): Promise<void> {

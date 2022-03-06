@@ -9,7 +9,6 @@ This class is responsible for handling all the requests related to the ICNS regi
 
 - [approve](ICNSRegistryController.md#approve)
 - [balanceOf](ICNSRegistryController.md#balanceof)
-- [getAgentPrincipal](ICNSRegistryController.md#getagentprincipal)
 - [getApproved](ICNSRegistryController.md#getapproved)
 - [getController](ICNSRegistryController.md#getcontroller)
 - [getExpiry](ICNSRegistryController.md#getexpiry)
@@ -49,10 +48,10 @@ This function needs to be called before operate with registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `operator` | `Principal` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents domain name to be approved |
+| `operator` | `Principal` | Represents approve who can operate owner's domain. |
 
 #### Returns
 
@@ -78,36 +77,23 @@ get user's domain.
 
 ___
 
-### getAgentPrincipal
-
-▸ **getAgentPrincipal**(): `Promise`<`Principal`\>
-
-Get the principal of the agent.
-It is going to throw if the principal is anonymous.
-
-#### Returns
-
-`Promise`<`Principal`\>
-
-return Principal stored in agent
-
-___
-
 ### getApproved
 
 ▸ **getApproved**(`domain`): `Promise`<``null`` \| `Principal`\>
 
-get approv for domain.
+get approved operator of a domain.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents domain name. |
 
 #### Returns
 
 `Promise`<``null`` \| `Principal`\>
+
+Return Principal id of the approved operator. Return null if no one got approved.
 
 ___
 
@@ -121,13 +107,13 @@ Get domain controller in registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
 
 #### Returns
 
 `Promise`<``null`` \| `Principal`\>
 
-return the Principal id of this name's controller, return null if not set.
+Return the Principal id of this name's controller, return null if not set.
 
 ___
 
@@ -141,13 +127,13 @@ Get domain expiry in registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
 
 #### Returns
 
 `Promise`<``null`` \| `bigint`\>
 
-return the expiry time of this domain name, return null if not timed.
+Return the expiry time of this domain name, return null if not timed.
 
 ___
 
@@ -161,13 +147,13 @@ Get domain owner in registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
 
 #### Returns
 
 `Promise`<``null`` \| `Principal`\>
 
-return the Principal id of this name's owner, return null if not set.
+Return the Principal id of this name's owner, return null if not set.
 
 ___
 
@@ -181,13 +167,13 @@ Get record in registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
 
 #### Returns
 
 `Promise`<``null`` \| [`RecordExt`](../interfaces/RecordExt.md)\>
 
-return record data object
+Return record data object. Return null if not set.
 
 ___
 
@@ -201,13 +187,13 @@ Get domain resolver in registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
 
 #### Returns
 
 `Promise`<``null`` \| `Principal`\>
 
-return the Principal id resolved from this name, return null if not set.
+Return the Principal id resolved from this domain name, return null if not set.
 
 ___
 
@@ -221,7 +207,7 @@ Get domain ttl in registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
 
 #### Returns
 
@@ -239,13 +225,13 @@ Get user's all registed domains in registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `user` | `Principal` | represents user indentity |
+| `user` | `Principal` | Represents the Principal id of the user. |
 
 #### Returns
 
 `Promise`<[`List`](../modules/Domain.md#list)\>
 
-return record data object
+Return record data object.
 
 ___
 
@@ -253,14 +239,14 @@ ___
 
 ▸ **isApproved**(`domain`, `who`): `Promise`<`boolean`\>
 
-get approve for domain.
+Get whether someone is approved for specific domain.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `who` | `Principal` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents domain name. |
+| `who` | `Principal` | Represents the principal id of the one to get checked. |
 
 #### Returns
 
@@ -272,14 +258,14 @@ ___
 
 ▸ **isApprovedForAll**(`owner`, `operator`): `Promise`<`boolean`\>
 
-get approve for all.
+Get whether someone is approved for all domains of an owner.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `owner` | `Principal` |
-| `operator` | `Principal` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `owner` | `Principal` | Represents the Principal id of the owner. |
+| `operator` | `Principal` | Represents the principal id of the one to get checked. |
 
 #### Returns
 
@@ -297,13 +283,13 @@ Check if domain record exist in registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
 
 #### Returns
 
 `Promise`<`boolean`\>
 
-return whether its record exists
+Return whether its record exists
 
 ___
 
@@ -317,10 +303,10 @@ This function needs to be called before operate with registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `approved` | `boolean` |
-| `operator` | `Principal` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `approved` | `boolean` | Represents whether the approve operator are approved for all domians |
+| `operator` | `Principal` | Represents the Principal id of the operator |
 
 #### Returns
 
@@ -332,20 +318,20 @@ ___
 
 ▸ **setController**(`domain`, `controller`): `Promise`<`void`\>
 
-set domain controller according to domain.
+Set domain controller according to domain.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `controller` | `Principal` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `controller` | `Principal` | Represents new controller. |
 
 #### Returns
 
 `Promise`<`void`\>
 
-return nothing
+Return nothing.
 
 ___
 
@@ -353,20 +339,20 @@ ___
 
 ▸ **setOwner**(`domain`, `owner`): `Promise`<`void`\>
 
-set domain owner according to domain.
+Set domain owner according to domain.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `owner` | `Principal` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `owner` | `Principal` | Represents the Principal id of the new owner. |
 
 #### Returns
 
 `Promise`<`void`\>
 
-return nothing
+Return nothing
 
 ___
 
@@ -374,19 +360,19 @@ ___
 
 ▸ **setRecord**(`params`): `Promise`<`void`\>
 
-set record according to domain.
+Set record according to domain.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `params` | [`RecordParams`](../modules/ICNSRegistryController.md#recordparams) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | [`RecordParams`](../modules/ICNSRegistryController.md#recordparams) | The data of the record. |
 
 #### Returns
 
 `Promise`<`void`\>
 
-return nothing
+Return nothing.
 
 ___
 
@@ -394,20 +380,20 @@ ___
 
 ▸ **setResolver**(`domain`, `resolver`): `Promise`<`void`\>
 
-set domain resolver according to domain.
+Set domain's resolver according to domain.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `resolver` | `Principal` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `resolver` | `Principal` | Represents new resolver. |
 
 #### Returns
 
 `Promise`<`void`\>
 
-return nothing
+Return nothing.
 
 ___
 
@@ -415,21 +401,21 @@ ___
 
 ▸ **setSubDomainExpiry**(`domain`, `sublabel`, `newExpiry`): `Promise`<`void`\>
 
-set sub domain expiry according to domain.
+Set sub domain expiry.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `sublabel` | `string` |
-| `newExpiry` | `bigint` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `sublabel` | `string` | Represents sublabel, such as: 'hello.test.icp'. |
+| `newExpiry` | `bigint` | Represents the new expiry. |
 
 #### Returns
 
 `Promise`<`void`\>
 
-return nothing
+Return nothing.
 
 ___
 
@@ -437,21 +423,21 @@ ___
 
 ▸ **setSubDomainOwner**(`domain`, `sublabel`, `owner`): `Promise`<`void`\>
 
-set sub domain owner according to domain.
+Set sub domain owner according to domain.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `sublabel` | `string` |
-| `owner` | `Principal` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `sublabel` | `string` | Represents sublabel, such as: 'hello.test.icp'. |
+| `owner` | `Principal` | Represents the Principal id of the thenew owner. |
 
 #### Returns
 
 `Promise`<`void`\>
 
-return nothing
+Return nothing.
 
 ___
 
@@ -459,19 +445,19 @@ ___
 
 ▸ **setSubnodeRecord**(`params`): `Promise`<`void`\>
 
-set subnoderecord according to domain.
+Set subnoderecord according to domain.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | [`RecordParams`](../modules/ICNSRegistryController.md#recordparams) | recoed type |
+| `params` | [`RecordParams`](../modules/ICNSRegistryController.md#recordparams) | The data of the record. |
 
 #### Returns
 
 `Promise`<`void`\>
 
-return nothing
+Return nothing.
 
 ___
 
@@ -483,16 +469,16 @@ set domain ttl according to domain.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `ttl` | `bigint` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents the domain name, such as: 'test.icp'. |
+| `ttl` | `bigint` | Represents the new ttl. |
 
 #### Returns
 
 `Promise`<`void`\>
 
-return nothing
+Return nothing.
 
 ___
 
@@ -506,10 +492,10 @@ This function needs to be called before operate with registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `to` | `Principal` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents domain name |
+| `to` | `Principal` | Represents who will get the domain |
 
 #### Returns
 
@@ -527,11 +513,11 @@ This function needs to be called before operate with registry canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
-| `from` | `Principal` |
-| `to` | `Principal` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents domain name |
+| `from` | `Principal` | Represents the domain's owner |
+| `to` | `Principal` | Represents who will get the domain |
 
 #### Returns
 

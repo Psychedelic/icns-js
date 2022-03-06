@@ -15,12 +15,17 @@ This class is responsible for handling all the requests related to the ICNS reso
 
 ### Methods
 
-- [getAgentPrincipal](ICNSResolverController.md#getagentprincipal)
+- [getAddr](ICNSResolverController.md#getaddr)
+- [getCanister](ICNSResolverController.md#getcanister)
 - [getHost](ICNSResolverController.md#gethost)
 - [getPrincipalId](ICNSResolverController.md#getprincipalid)
+- [getText](ICNSResolverController.md#gettext)
 - [getUserDefaultInfo](ICNSResolverController.md#getuserdefaultinfo)
+- [setAddr](ICNSResolverController.md#setaddr)
+- [setCanister](ICNSResolverController.md#setcanister)
 - [setDefaultInfo](ICNSResolverController.md#setdefaultinfo)
 - [setHost](ICNSResolverController.md#sethost)
+- [setText](ICNSResolverController.md#settext)
 
 ## Properties
 
@@ -45,16 +50,45 @@ Some of the functions uses the actor agent identity to identify the user that is
 
 ## Methods
 
-### getAgentPrincipal
+### getAddr
 
-▸ **getAgentPrincipal**(): `Promise`<`Principal`\>
+▸ **getAddr**(`domain`, `coinType`): `Promise`<`string`\>
 
-Get the principal of the agent.
-It is going to throw if the principal is anonymous.
+Get setted coin address.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents domain name |
+| `coinType` | `string` | Represents coin type |
+
+#### Returns
+
+`Promise`<`string`\>
+
+Return coin address
+
+___
+
+### getCanister
+
+▸ **getCanister**(`domain`, `key`): `Promise`<`Principal`\>
+
+Get canister id in the record.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+| `key` | `string` | Represents canister, such as: main |
 
 #### Returns
 
 `Promise`<`Principal`\>
+
+Return canister id in the record
 
 ___
 
@@ -68,13 +102,13 @@ Get host record.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
 
 #### Returns
 
 `Promise`<`string` \| `Principal`\>
 
-return host of a domain name
+Return host of a domain name
 
 ___
 
@@ -88,7 +122,7 @@ Get principal id by name.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
 
 #### Returns
 
@@ -96,9 +130,30 @@ Get principal id by name.
 
 ___
 
+### getText
+
+▸ **getText**(`domain`, `key`): `Promise`<`string`\>
+
+Get text info.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+| `key` | `string` | Represents user info, such as: twitter |
+
+#### Returns
+
+`Promise`<`string`\>
+
+Return user info
+
+___
+
 ### getUserDefaultInfo
 
-▸ **getUserDefaultInfo**(`domain`): `Promise`<`void`\>
+▸ **getUserDefaultInfo**(`domain`): `Promise`<``null`` \| [`DefaultInfoExt`](../interfaces/DefaultInfoExt.md)\>
 
 Get user default info in resolver canister.
 
@@ -106,13 +161,53 @@ Get user default info in resolver canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+
+#### Returns
+
+`Promise`<``null`` \| [`DefaultInfoExt`](../interfaces/DefaultInfoExt.md)\>
+
+Return info or null
+
+___
+
+### setAddr
+
+▸ **setAddr**(`domain`, `coinType`, `value`): `Promise`<`void`\>
+
+Set coin addresss in user info.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+| `coinType` | `string` | Represents user domain, such as: 'test.icp' |
+| `value` | `string` | Represents coin address |
 
 #### Returns
 
 `Promise`<`void`\>
 
-return nothing
+___
+
+### setCanister
+
+▸ **setCanister**(`domain`, `key`, `value`): `Promise`<`void`\>
+
+Set canister id in user info.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+| `key` | `string` | - |
+| `value` | `string` | Represents canister id |
+
+#### Returns
+
+`Promise`<`void`\>
 
 ___
 
@@ -120,16 +215,16 @@ ___
 
 ▸ **setDefaultInfo**(`domain`, `type`, `value`, `extensionType?`): `Promise`<`void`\>
 
-set default info according to domain.
+Set default info according to domain.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
-| `type` | [`DefaultInfo`](../enums/ICNSResolverController.DefaultInfo.md) | represents which type info user wants to set |
-| `value` | `string` | represents the value |
-| `extensionType?` | `string` | represents the extra type user wants to set |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+| `type` | [`DefaultInfo`](../enums/ICNSResolverController.DefaultInfo.md) | Represents which type info user wants to set |
+| `value` | `string` | Represents the value |
+| `extensionType?` | `string` | Represents the extra type user wants to set |
 
 #### Returns
 
@@ -141,14 +236,34 @@ ___
 
 ▸ **setHost**(`domain`, `params?`): `Promise`<`void`\>
 
-set host record.
+Set host record in user info.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | represents user domain, such as: test.icp |
-| `params?` | [`HostParams`](../modules/ICNSResolverController.md#hostparams) | host type |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+| `params?` | [`Host`](../modules/ICNSResolverController.md#host) | host type |
+
+#### Returns
+
+`Promise`<`void`\>
+
+___
+
+### setText
+
+▸ **setText**(`domain`, `key`, `value`): `Promise`<`void`\>
+
+Set text in user info.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+| `key` | `string` | - |
+| `value` | `string` | Represents info |
 
 #### Returns
 

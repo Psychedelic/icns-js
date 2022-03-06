@@ -64,6 +64,7 @@
 - [createReverseActor](README.md#createreverseactor)
 - [createTokenActor](README.md#createtokenactor)
 - [formatAmount](README.md#formatamount)
+- [getCrc32](README.md#getcrc32)
 - [getDeadline](README.md#getdeadline)
 - [idlFavoriteFactory](README.md#idlfavoritefactory)
 - [idlRegistrarFactory](README.md#idlregistrarfactory)
@@ -75,6 +76,7 @@
 - [removeIcpSuffix](README.md#removeicpsuffix)
 - [toBigNumber](README.md#tobignumber)
 - [toExponential](README.md#toexponential)
+- [verifyAccountId](README.md#verifyaccountid)
 
 ## Type aliases
 
@@ -342,6 +344,24 @@ Formats an amount to a small string with scientific notation
 
 ___
 
+### getCrc32
+
+▸ **getCrc32**(`buf`): `number`
+
+Calculate the CRC32 of an ArrayBufferLike.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `buf` | `any` | The BufferLike to calculate the CRC32 of. |
+
+#### Returns
+
+`number`
+
+___
+
 ### getDeadline
 
 ▸ **getDeadline**(): `bigint`
@@ -516,3 +536,19 @@ Create an exponential notation by given decimals.
 #### Returns
 
 `BigNumber`
+
+___
+
+### verifyAccountId
+
+▸ **verifyAccountId**(`hexString`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `hexString` | `string` |
+
+#### Returns
+
+`boolean`

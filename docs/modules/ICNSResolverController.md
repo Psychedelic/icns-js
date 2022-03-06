@@ -10,15 +10,15 @@ Type definition for the ICNSResolverController.
 
 ### Type aliases
 
-- [HostParams](ICNSResolverController.md#hostparams)
+- [Host](ICNSResolverController.md#host)
 
 ## Type aliases
 
-### HostParams
+### Host
 
-Ƭ **HostParams**: { `url`: `string`  } \| { `canister`: `Principal`  }
+Ƭ **Host**: { `url`: `string`  } \| { `canister`: `Principal`  }
 
-Type definition for params of the setHost function.
+Type definition for Host of domains. It is a url or a principal id.
 
 **`param`**
 
