@@ -1,4 +1,5 @@
 /**
+ * @internal
  * ICNSConstants values used on ICNS-js library.
  */
 export const ICNSConstants = {

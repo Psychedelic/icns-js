@@ -211,7 +211,7 @@ Some of the functions uses the actor agent identity to identify the user that is
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `registrarActor` | [`RegistrarActor`](../README.md#registraractor) | actor or an anonymous will be used |
+| `registrarActor` | `RegistrarActor` | actor or an anonymous will be used |
 
 ## Properties
 

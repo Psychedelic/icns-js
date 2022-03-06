@@ -20,9 +20,9 @@ import { ActorAdapter } from './adapter';
 
 /**
  * Options for creating an CanisterActor.
- * @internal
  * @param {string} canisterId  Canister ID, default is applied
  * @param {ActorAdapter} actorAdapter ActorAdapter instance with or without a provider, default is applied
+ * @internal
  */
 export interface CreateCanisterActorOptions {
   canisterId?: string;
@@ -31,6 +31,7 @@ export interface CreateCanisterActorOptions {
 
 /**
  * Type of RegistrarActor.
+ * @internal
  */
 export type RegistrarActor = ActorAdapter.Actor<ICNSRegistrar>;
 
@@ -39,6 +40,7 @@ export type RegistrarActor = ActorAdapter.Actor<ICNSRegistrar>;
  * If no option is provided, the actor will be created using the default canister options.
  * @param {CreateCanisterActorOptions} options Options for creating the RegistrarActor
  * @returns {RegistrarActor} actor instance
+ * @internal
  */
 export const createRegistrarActor = ({
   canisterId = ICNSConstants.canisterIds.registrar,
@@ -50,12 +52,14 @@ export const createRegistrarActor = ({
 
 /**
  * Type of RegistryActor.
+ * @internal
  */
 export type RegistryActor = ActorAdapter.Actor<ICNSRegistry>;
 
 /**
  * Creates a Registry canister actor.
  * If no option is provided, the actor will be created using the default canister options.
+ * @internal
  * @param {CreateCanisterActorOptions} options Options for creating the RegistryActor
  * @returns {RegistryActor} actor instance
  */
@@ -68,6 +72,7 @@ export const createRegistryActor = ({
 
  /**
  * Type of ResolverActor.
+ * @internal
  */
 export type ResolverActor = ActorAdapter.Actor<ICNSResolver>;
 
@@ -76,6 +81,7 @@ export type ResolverActor = ActorAdapter.Actor<ICNSResolver>;
  * If no option is provided, the actor will be created using the default canister options.
  * @param {CreateCanisterActorOptions} options Options for creating the ResolverActor
  * @returns {ResolverActor} actor instance
+ * @internal
  */
 export const createResolverActor = ({
   canisterId = ICNSConstants.canisterIds.resolver,
@@ -86,12 +92,14 @@ export const createResolverActor = ({
 
  /**
  * Type of ReverseActor.
+ * @internal
  */
   export type ReverseActor = ActorAdapter.Actor<ICNSReverseRegistrar>;
 
   /**
    * Creates a Reverse canister actor.
    * If no option is provided, the actor will be created using the default canister options.
+   * @internal
    * @param {CreateCanisterActorOptions} options Options for creating the ReverseActor
    * @returns {ReverseActor} actor instance
    */
@@ -104,6 +112,7 @@ export const createResolverActor = ({
 
 /**
  * Type of FavoriteActor.
+ * @internal
  */
  export type FavoriteActor = ActorAdapter.Actor<ICNSFavorite>;
 
@@ -112,6 +121,7 @@ export const createResolverActor = ({
   * If no option is provided, the actor will be created using the default canister options.
   * @param {CreateCanisterActorOptions} options Options for creating the FavoriteActor
   * @returns {FavoriteActor} actor instance
+  * @internal
   */
  export const createFavoriteActor = ({
    canisterId = ICNSConstants.canisterIds.favorite,
@@ -122,6 +132,7 @@ export const createResolverActor = ({
 
  /**
  * Type of WICPActor.
+ * @internal
  */
 export type TokenActor = ActorAdapter.Actor<ICNSToken>;
 
@@ -130,6 +141,7 @@ export type TokenActor = ActorAdapter.Actor<ICNSToken>;
  * If no option is provided, the actor will be created using the default canister options.
  * @param {CreateCanisterActorOptions} options Options for creating the TokenActor
  * @returns {TokenActor} actor instance
+ * @internal
  */
 export const createTokenActor = ({
   canisterId = ICNSConstants.canisterIds.WICP,

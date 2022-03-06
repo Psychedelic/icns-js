@@ -46,7 +46,7 @@ Some of the functions uses the actor agent identity to identify the user that is
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `resolverActor` | [`ResolverActor`](../README.md#resolveractor) | actor or an anonymous will be used |
+| `resolverActor` | `ResolverActor` | actor or an anonymous will be used |
 
 ## Methods
 

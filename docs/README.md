@@ -15,18 +15,8 @@
 ### Type aliases
 
 - [BidState](README.md#bidstate)
-- [FavoriteActor](README.md#favoriteactor)
 - [Operation](README.md#operation)
-- [RegistrarActor](README.md#registraractor)
-- [RegistryActor](README.md#registryactor)
-- [ResolverActor](README.md#resolveractor)
-- [ReverseActor](README.md#reverseactor)
-- [TokenActor](README.md#tokenactor)
 - [TxReceipt](README.md#txreceipt)
-
-### Variables
-
-- [ICNSConstants](README.md#icnsconstants)
 
 ### Classes
 
@@ -44,12 +34,6 @@
 
 - [VerifyDomainName](README.md#verifydomainname)
 - [addIcpSuffix](README.md#addicpsuffix)
-- [createFavoriteActor](README.md#createfavoriteactor)
-- [createRegistrarActor](README.md#createregistraractor)
-- [createRegistryActor](README.md#createregistryactor)
-- [createResolverActor](README.md#createresolveractor)
-- [createReverseActor](README.md#createreverseactor)
-- [createTokenActor](README.md#createtokenactor)
 - [formatAmount](README.md#formatamount)
 - [getCrc32](README.md#getcrc32)
 - [getDeadline](README.md#getdeadline)
@@ -66,85 +50,15 @@
 
 ___
 
-### FavoriteActor
-
-Ƭ **FavoriteActor**: `ActorAdapter.Actor`<`ICNSFavorite`\>
-
-Type of FavoriteActor.
-
-___
-
 ### Operation
 
 Ƭ **Operation**: { `transferFrom`: ``null``  } \| { `burn`: ``null``  } \| { `mint`: ``null``  } \| { `approve`: ``null``  } \| { `transfer`: ``null``  }
 
 ___
 
-### RegistrarActor
-
-Ƭ **RegistrarActor**: `ActorAdapter.Actor`<`ICNSRegistrar`\>
-
-Type of RegistrarActor.
-
-___
-
-### RegistryActor
-
-Ƭ **RegistryActor**: `ActorAdapter.Actor`<`ICNSRegistry`\>
-
-Type of RegistryActor.
-
-___
-
-### ResolverActor
-
-Ƭ **ResolverActor**: `ActorAdapter.Actor`<`ICNSResolver`\>
-
-Type of ResolverActor.
-
-___
-
-### ReverseActor
-
-Ƭ **ReverseActor**: `ActorAdapter.Actor`<`ICNSReverseRegistrar`\>
-
-Type of ReverseActor.
-
-___
-
-### TokenActor
-
-Ƭ **TokenActor**: `ActorAdapter.Actor`<`ICNSToken`\>
-
-Type of WICPActor.
-
-___
-
 ### TxReceipt
 
 Ƭ **TxReceipt**: { `ok`: `bigint`  } \| { `err`: `string`  }
-
-## Variables
-
-### ICNSConstants
-
-• `Const` **ICNSConstants**: `Object`
-
-ICNSConstants values used on ICNS-js library.
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `canisterIds` | { `WICP`: `string` ; `favorite`: `string` ; `registrar`: `string` ; `registry`: `string` ; `resolver`: `string` ; `reverse_registrar`: `string`  } |
-| `canisterIds.WICP` | `string` |
-| `canisterIds.favorite` | `string` |
-| `canisterIds.registrar` | `string` |
-| `canisterIds.registry` | `string` |
-| `canisterIds.resolver` | `string` |
-| `canisterIds.reverse_registrar` | `string` |
-| `host` | `string` |
-| `wicpDecimal` | `number` |
 
 ## Functions
 
@@ -177,132 +91,6 @@ ___
 #### Returns
 
 `string`
-
-___
-
-### createFavoriteActor
-
-▸ **createFavoriteActor**(`options?`): `Promise`<[`FavoriteActor`](README.md#favoriteactor)\>
-
-Creates a Favorite canister actor.
-If no option is provided, the actor will be created using the default canister options.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | `CreateCanisterActorOptions` | Options for creating the FavoriteActor |
-
-#### Returns
-
-`Promise`<[`FavoriteActor`](README.md#favoriteactor)\>
-
-actor instance
-
-___
-
-### createRegistrarActor
-
-▸ **createRegistrarActor**(`options?`): `Promise`<[`RegistrarActor`](README.md#registraractor)\>
-
-Creates a Registrar canister actor.
-If no option is provided, the actor will be created using the default canister options.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | `CreateCanisterActorOptions` | Options for creating the RegistrarActor |
-
-#### Returns
-
-`Promise`<[`RegistrarActor`](README.md#registraractor)\>
-
-actor instance
-
-___
-
-### createRegistryActor
-
-▸ **createRegistryActor**(`options?`): `Promise`<[`RegistryActor`](README.md#registryactor)\>
-
-Creates a Registry canister actor.
-If no option is provided, the actor will be created using the default canister options.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | `CreateCanisterActorOptions` | Options for creating the RegistryActor |
-
-#### Returns
-
-`Promise`<[`RegistryActor`](README.md#registryactor)\>
-
-actor instance
-
-___
-
-### createResolverActor
-
-▸ **createResolverActor**(`options?`): `Promise`<[`ResolverActor`](README.md#resolveractor)\>
-
-Creates a Resolver canister actor.
-If no option is provided, the actor will be created using the default canister options.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | `CreateCanisterActorOptions` | Options for creating the ResolverActor |
-
-#### Returns
-
-`Promise`<[`ResolverActor`](README.md#resolveractor)\>
-
-actor instance
-
-___
-
-### createReverseActor
-
-▸ **createReverseActor**(`options?`): `Promise`<[`ReverseActor`](README.md#reverseactor)\>
-
-Creates a Reverse canister actor.
-If no option is provided, the actor will be created using the default canister options.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | `CreateCanisterActorOptions` | Options for creating the ReverseActor |
-
-#### Returns
-
-`Promise`<[`ReverseActor`](README.md#reverseactor)\>
-
-actor instance
-
-___
-
-### createTokenActor
-
-▸ **createTokenActor**(`options`): `Promise`<[`TokenActor`](README.md#tokenactor)\>
-
-Creates a DIP20 Token canister actor.
-If no option is provided, the actor will be created using the default canister options.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | `CreateCanisterActorOptions` | Options for creating the TokenActor |
-
-#### Returns
-
-`Promise`<[`TokenActor`](README.md#tokenactor)\>
-
-actor instance
 
 ___
 

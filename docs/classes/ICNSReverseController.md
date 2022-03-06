@@ -27,7 +27,7 @@ Some of the functions uses the actor agent identity to identify the user that is
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `reverseActor` | [`ReverseActor`](../README.md#reverseactor) | actor or an anonymous will be used |
+| `reverseActor` | `ReverseActor` | actor or an anonymous will be used |
 
 ## Methods
 
