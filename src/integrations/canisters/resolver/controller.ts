@@ -28,7 +28,7 @@ export class ICNSResolverController {
   /**
    * Get the principal of the agent.
    * It is going to throw if the principal is anonymous.
-   * @returns {Promise<Principal>}
+   * @returns {Promise<Principal>} 
    */
   async getAgentPrincipal(): Promise<Principal> {
     const agent = Actor.agentOf(this.resolverActor);
@@ -45,13 +45,14 @@ export class ICNSResolverController {
   /**
    * Get user default info in resolver canister.
    * @param {string} domain  represents user domain, such as: test.icp
-   * @returns {Promise<void>} return nothing
+   * @returns {Promise<DefaultInfoExt | null>} return info or null
    */
-  async getUserDefaultInfo(domain: string): Promise<void> {
+  async getUserDefaultInfo(domain: string): Promise<DefaultInfoExt | null> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     const response = await this.resolverActor.getUserDefaultInfo(name);
     this.DefaultInfo = response[0] ? response[0] : null;
+    return this.DefaultInfo;
   }
 
   /**
@@ -100,7 +101,7 @@ export class ICNSResolverController {
   }
 
   /**
-   * Get test info.
+   * Get text info.
    * @param {string} domain represents user domain, such as: test.icp
    * @param {string} key represents user info, such as: twitter
    * @returns {Promise<string>} return user info
@@ -109,7 +110,7 @@ export class ICNSResolverController {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     const result = await this.resolverActor.getText(name, key)
-    if (!result[0]) throw new Error(' not set')
+    if (!result[0]) throw new Error('Not set')
     return result[0]
   }
 
@@ -123,14 +124,14 @@ export class ICNSResolverController {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     const result = await this.resolverActor.getCanister(name, key)
-    if (!result[0]) throw new Error(' not set')
+    if (!result[0]) throw new Error('Not set')
     return result[0]
   }
 
   /**
    * Get host record.
    * @param {string} domain represents user domain, such as: test.icp
-   * @returns {Promise<Principal|string>} return host of a domain name
+   * @returns {Promise<ICNSResolverController.Host>} return host of a domain name
    */
   async getHost(domain: string): Promise<Principal | string> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
@@ -275,7 +276,7 @@ export class ICNSResolverController {
         break;
       }
       default:
-        throw new Error("Wrong type");
+        throw new Error("Incorrect type");
     }
   }
 
@@ -293,13 +294,13 @@ export class ICNSResolverController {
   ): Promise<void> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
-    if(coinType.length === 0 || coinType.length > 50) throw new Error('coin name lenght should be between 1 and 50')
-    if(value.length === 0 || value.length > 250) throw new Error('value lenght should be between 1 and 250')
-    
+    if (coinType.length === 0 || coinType.length > 50) throw new Error('coin name lenght should be between 1 and 50')
+    if (value.length === 0 || value.length > 250) throw new Error('value lenght should be between 1 and 250')
+
     try {
       formatsByName[coinType.toUpperCase()].decoder(value);
     } catch {
-      throw new Error('Wrong coin address format'); 
+      throw new Error('Incorrect coin address format');
     }
     await this.getAgentPrincipal(); // user identity
     const result = await this.resolverActor.setAddr(name, coinType, [value]);
@@ -313,16 +314,16 @@ export class ICNSResolverController {
    * @param {string} value represents info
    * @returns {Promise<void>}
    */
-   async setText(
+  async setText(
     domain: string,
     key: string,
     value: string
   ): Promise<void> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
-    if(key.length === 0 || key.length > 50) throw new Error('key lenght should be between 1 and 50')
-    if(value.length === 0 || value.length > 250) throw new Error('value lenght should be between 1 and 250')
-    
+    if (key.length === 0 || key.length > 50) throw new Error('key lenght should be between 1 and 50')
+    if (value.length === 0 || value.length > 250) throw new Error('value lenght should be between 1 and 250')
+
     await this.getAgentPrincipal(); // user identity
     const result = await this.resolverActor.setText(name, key, [value]);
     if ("err" in result) throw new Error(JSON.stringify(result.err));
@@ -335,18 +336,18 @@ export class ICNSResolverController {
    * @param {string} value represents canister id
    * @returns {Promise<void>}
    */
-   async setCanister(
+  async setCanister(
     domain: string,
     key: string,
     value: string
   ): Promise<void> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
-    if(key.length === 0 || key.length > 50) throw new Error('key lenght should be between 1 and 50')
+    if (key.length === 0 || key.length > 50) throw new Error('key lenght should be between 1 and 50')
     try {
       Principal.fromText(value);
     } catch {
-      throw new Error('Wrong canister id format'); 
+      throw new Error('Incorrect canister id format');
     }
     await this.getAgentPrincipal(); // user identity
     const result = await this.resolverActor.setCanister(name, key, [Principal.fromText(value)]);
@@ -357,18 +358,18 @@ export class ICNSResolverController {
   /**
    * set host record.
    * @param {string} domain  represents user domain, such as: test.icp
-   * @param {ICNSResolverController.HostParams} params host type
+   * @param {ICNSResolverController.Host} params host type
    * @returns {Promise<void>}
    */
   async setHost(
     domain: string,
-    params?: ICNSResolverController.HostParams
+    params?: ICNSResolverController.Host
   ): Promise<void> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     await this.getAgentPrincipal(); // user identity
     if (!params) {
-      throw new Error("Wrong host info");
+      throw new Error("Expect 1 argument but got none");
     } else if ("url" in params) {
       const result = await this.resolverActor.setHost(name, [params]);
       if ("err" in result) throw new Error(JSON.stringify(result.err));
@@ -376,7 +377,7 @@ export class ICNSResolverController {
       const result = await this.resolverActor.setHost(name, [params]);
       if ("err" in result) throw new Error(JSON.stringify(result.err));
     } else {
-      throw new Error("Wrong host format");
+      throw new Error("Incorrect host format");
     }
   }
 }
@@ -409,9 +410,9 @@ export namespace ICNSResolverController {
   }
 
   /**
-   * Type definition for params of the setHost function.
+   * Type definition for Host of domains. It is a url or a principal id.
    * @param {string} url
    * @param {Principal} canister
    */
-  export type HostParams = { url: string } | { canister: Principal };
+  export type Host = { url: string } | { canister: Principal };
 }

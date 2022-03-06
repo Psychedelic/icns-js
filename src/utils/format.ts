@@ -179,7 +179,7 @@ export const addIcpSuffix = (name: string | undefined) => {
 
 export const verifyAccountId = (hexString: string) => {
   if (hexString.length !== 64){
-    throw new Error('Invalid account id: wrong length')
+    throw new Error('Invalid account id: Incorrect length')
   }
   // crc part
   var crc = Number('0x'+ hexString.slice(0, 8))

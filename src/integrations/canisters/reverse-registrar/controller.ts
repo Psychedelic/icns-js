@@ -54,7 +54,7 @@ export class ICNSReverseController {
    */
   async setReverseName(domain: string): Promise<void> {
     if (!VerifyDomainName(domain))
-      throw new Error('Wrong domain name')
+      throw new Error('Incorrect domain name')
     const name = addIcpSuffix(domain) // guarantee the domain name with .icp suffix
 
     await this.getAgentPrincipal() // get pulg wallet identity this.reverseActor

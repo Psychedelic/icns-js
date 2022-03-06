@@ -53,7 +53,7 @@ export class ICNSRegistrarController {
    */
   async domainIsAvailable(domain: string): Promise<boolean | string> {
     if (!VerifyDomainName(domain))
-      throw new Error('Wrong domain name')
+      throw new Error('Incorrect domain name')
     const name = removeIcpSuffix(domain)
     const response = await this.registrarActor.available(name);
     return 'ok' in response ? response['ok'] : response['err']
@@ -65,7 +65,7 @@ export class ICNSRegistrarController {
    */
   async getAuciton(domain: string): Promise<[] | [AuctionExt]> {
     if (!VerifyDomainName(domain))
-      throw new Error('Wrong domain name')
+      throw new Error('Incorrect domain name')
     const name = removeIcpSuffix(domain)
     const response = await this.registrarActor.getAuction(name);
     return response
@@ -162,7 +162,7 @@ export class ICNSRegistrarController {
     amount,
   }: ICNSRegistrarController.PlaceBidParams): Promise<void> {
     if (!VerifyDomainName(domain))
-      throw new Error('Wrong domain name')
+      throw new Error('Incorrect domain name')
     const name = removeIcpSuffix(domain)
 
     await this.approve({ tokenId: ICNSConstants.canisterIds.WICP, amount });
@@ -188,7 +188,7 @@ export class ICNSRegistrarController {
     duration,
   }: ICNSRegistrarController.RenewParams): Promise<void> {
     if (!VerifyDomainName(domain))
-      throw new Error('Wrong domain name')
+      throw new Error('Incorrect domain name')
     const name = removeIcpSuffix(domain)
 
     await this.getRegistrarInfo()
@@ -196,7 +196,7 @@ export class ICNSRegistrarController {
     let renewPrice = this.info?.renewPrices
 
     if (name.length === 0 || !renewPrice)
-      throw new Error('Wrong value')
+      throw new Error('Incorrect value')
 
     let unitPrice = name.length >= renewPrice.length ? renewPrice[renewPrice.length - 1] : renewPrice[name.length - 1]
     let amount = (Number(duration) * unitPrice).toString()
@@ -219,7 +219,7 @@ export class ICNSRegistrarController {
  */
   async claim(domain: string): Promise<void> {
     if (!VerifyDomainName(domain))
-      throw new Error('Wrong domain name')
+      throw new Error('Incorrect domain name')
     const name = removeIcpSuffix(domain)
 
     await this.getAgentPrincipal(); //this.registrarActor
