@@ -20,6 +20,7 @@ import { ActorAdapter } from './adapter';
 
 /**
  * Options for creating an CanisterActor.
+ * @internal
  * @param {string} canisterId  Canister ID, default is applied
  * @param {ActorAdapter} actorAdapter ActorAdapter instance with or without a provider, default is applied
  */

@@ -1,4 +1,5 @@
 import type { Principal } from '@dfinity/principal';
+/** @internal */
 export interface ICNSFavorite {
   'addFavoriteName' : (arg_0: string) => Promise<Result>,
   'getUserFavoriteNames' : (arg_0: Principal) => Promise<[] | [Array<string>]>,

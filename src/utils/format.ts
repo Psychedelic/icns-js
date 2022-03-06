@@ -60,6 +60,9 @@ const lookUpTable = new Uint32Array([
 
 /**
  * Type definition for options of toBigNumber function.
+ * @param {boolean} isNotANumber Represents whether a number
+ * @param {boolean} isEmpty Represents whether a empty value
+ * @param {boolean} isNegative Represents whether a negative
  */
 export interface ToBigNumberOptions {
   validate?: {
@@ -71,8 +74,8 @@ export interface ToBigNumberOptions {
 
 /**
  * Converts a value to a BigNumber.
- * @param {Types.Number} num
- * @param {ToBigNumberOptions} options
+ * @param {Types.Number} num Represents number value.
+ * @param {ToBigNumberOptions} options Represents value options.
  * @returns {BigNumber}
  */
 export const toBigNumber = (

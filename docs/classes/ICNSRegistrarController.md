@@ -29,7 +29,7 @@ This class is responsible for handling all the requests related to the ICNS regi
 
 ### approve
 
-▸ **approve**(`__namedParameters`): `Promise`<`void`\>
+▸ **approve**(`tokenId`, `amount`): `Promise`<`void`\>
 
 Approve transfers from token to registrar canister.
 This function uses the actor agent identity.
@@ -37,13 +37,16 @@ This function needs to be called before operate with registrar canister.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | [`ApproveParams`](../modules/ICNSRegistrarController.md#approveparams) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `tokenId` | `undefined` \| `string` | the canister id of the token to be approved. |
+| `amount` | `string` | the amount of the token to be approved. |
 
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise.
 
 ___
 
@@ -58,11 +61,13 @@ This function uses the actor agent identity.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | domain name to be claimed |
+| `domain` | `string` | domain name to be claimed. |
 
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise.
 
 ___
 
@@ -74,9 +79,9 @@ Verify domain available or not.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents domain name. |
 
 #### Returns
 
@@ -88,17 +93,19 @@ ___
 
 ▸ **getAuciton**(`domain`): `Promise`<[] \| [[`AuctionExt`](../interfaces/AuctionExt.md)]\>
 
-Verify domain is onAuction or not.
+Get auction state.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `domain` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | Represents domain name. |
 
 #### Returns
 
 `Promise`<[] \| [[`AuctionExt`](../interfaces/AuctionExt.md)]\>
+
+Return auction state.
 
 ___
 
@@ -122,51 +129,59 @@ Get one token balance for a given principal id (wicp as default).
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `principalId` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `principalId` | `string` | Represents user identity. |
 
 #### Returns
 
 `Promise`<[`Balance`](../modules/Token.md#balance)\>
 
+Return balance.
+
 ___
 
 ### placeBid
 
-▸ **placeBid**(`__namedParameters`): `Promise`<`void`\>
+▸ **placeBid**(`domain`, `amount`): `Promise`<`void`\>
 
 Place Bid into canister.
 This function uses the actor agent identity.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | [`PlaceBidParams`](../modules/ICNSRegistrarController.md#placebidparams) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | - |
+| `amount` | `string` | the amount of this bid. |
 
 #### Returns
 
 `Promise`<`void`\>
 
+Return void promise.
+
 ___
 
 ### renew
 
-▸ **renew**(`__namedParameters`): `Promise`<`void`\>
+▸ **renew**(`domain`, `duration`): `Promise`<`void`\>
 
 Renew into canister.
 This function uses the actor agent identity.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | [`RenewParams`](../modules/ICNSRegistrarController.md#renewparams) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `domain` | `string` | domain name to be renewed, 'hello' for example. |
+| `duration` | [`Number`](../modules/Types.md#number) | duration of this renew, 1 for 1 year. |
 
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise.
 
 ___
 
@@ -180,6 +195,8 @@ This function uses the actor agent identity.
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise
 
 ## Constructors
 

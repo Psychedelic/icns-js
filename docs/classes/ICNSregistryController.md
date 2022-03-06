@@ -50,12 +50,14 @@ This function needs to be called before operate with registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents domain name to be approved |
+| `domain` | `string` | Represents domain name to be approved. |
 | `operator` | `Principal` | Represents approve who can operate owner's domain. |
 
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise.
 
 ___
 
@@ -207,17 +209,19 @@ Get domain ttl in registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
 
 #### Returns
 
 `Promise`<``null`` \| `bigint`\>
 
+Return TTL value.
+
 ___
 
 ### getUserNames
 
-▸ **getUserNames**(`user`): `Promise`<[`List`](../modules/Domain.md#list)\>
+▸ **getUserNames**(`user`): `Promise`<[`DomainList`](../modules/Types.md#domainlist)\>
 
 Get user's all registed domains in registry canister.
 
@@ -229,7 +233,7 @@ Get user's all registed domains in registry canister.
 
 #### Returns
 
-`Promise`<[`List`](../modules/Domain.md#list)\>
+`Promise`<[`DomainList`](../modules/Types.md#domainlist)\>
 
 Return record data object.
 
@@ -305,12 +309,14 @@ This function needs to be called before operate with registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `approved` | `boolean` | Represents whether the approve operator are approved for all domians |
-| `operator` | `Principal` | Represents the Principal id of the operator |
+| `approved` | `boolean` | Represents whether the approve operator are approved for all domians. |
+| `operator` | `Principal` | Represents the Principal id of the operator. |
 
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise.
 
 ___
 
@@ -331,7 +337,7 @@ Set domain controller according to domain.
 
 `Promise`<`void`\>
 
-Return nothing.
+Return void promise.
 
 ___
 
@@ -352,7 +358,7 @@ Set domain owner according to domain.
 
 `Promise`<`void`\>
 
-Return nothing
+Return void promise
 
 ___
 
@@ -366,13 +372,13 @@ Set record according to domain.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | [`RecordParams`](../modules/ICNSRegistryController.md#recordparams) | The data of the record. |
+| `params` | [`RecordParams`](../modules/Types.md#recordparams) | The data of the record. |
 
 #### Returns
 
 `Promise`<`void`\>
 
-Return nothing.
+Return void promise.
 
 ___
 
@@ -393,7 +399,7 @@ Set domain's resolver according to domain.
 
 `Promise`<`void`\>
 
-Return nothing.
+Return void promise.
 
 ___
 
@@ -401,7 +407,7 @@ ___
 
 ▸ **setSubDomainExpiry**(`domain`, `sublabel`, `newExpiry`): `Promise`<`void`\>
 
-Set sub domain expiry.
+Set subdomain expiry.
 
 #### Parameters
 
@@ -415,7 +421,7 @@ Set sub domain expiry.
 
 `Promise`<`void`\>
 
-Return nothing.
+Return void promise.
 
 ___
 
@@ -437,7 +443,7 @@ Set sub domain owner according to domain.
 
 `Promise`<`void`\>
 
-Return nothing.
+Return void promise.
 
 ___
 
@@ -451,13 +457,13 @@ Set subnoderecord according to domain.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | [`RecordParams`](../modules/ICNSRegistryController.md#recordparams) | The data of the record. |
+| `params` | [`RecordParams`](../modules/Types.md#recordparams) | The data of the record. |
 
 #### Returns
 
 `Promise`<`void`\>
 
-Return nothing.
+Return void promise.
 
 ___
 
@@ -478,7 +484,7 @@ set domain ttl according to domain.
 
 `Promise`<`void`\>
 
-Return nothing.
+Return void promise.
 
 ___
 
@@ -501,6 +507,8 @@ This function needs to be called before operate with registry canister.
 
 `Promise`<`void`\>
 
+Return void promise
+
 ___
 
 ### transferFrom
@@ -515,13 +523,15 @@ This function needs to be called before operate with registry canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents domain name |
-| `from` | `Principal` | Represents the domain's owner |
-| `to` | `Principal` | Represents who will get the domain |
+| `domain` | `string` | Represents domain name. |
+| `from` | `Principal` | Represents the domain's owner. |
+| `to` | `Principal` | Represents who will get the domain. |
 
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise.
 
 ## Constructors
 

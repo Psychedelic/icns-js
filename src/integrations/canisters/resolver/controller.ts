@@ -1,4 +1,4 @@
-import { ICNSConstants, DefaultInfoExt, idlResolverFactory } from "@/declarations";
+import { ICNSConstants, DefaultInfoExt, idlResolverFactory, Types } from "@/declarations";
 import { Actor } from "@dfinity/agent";
 import { Principal } from "@dfinity/principal";
 import { ActorAdapter, createRegistryActor, ResolverActor } from "../..";
@@ -45,8 +45,8 @@ export class ICNSResolverController {
 
   /**
    * Get user default info in resolver canister.
-   * @param {string} domain  Represents user domain, such as: 'test.icp'
-   * @returns {Promise<DefaultInfoExt | null>} Return info or null
+   * @param {string} domain  Represents user domain, such as: 'test.icp'.
+   * @returns {Promise<DefaultInfoExt | null>} Return info or null.
    */
   async getUserDefaultInfo(domain: string): Promise<DefaultInfoExt | null> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
@@ -58,8 +58,8 @@ export class ICNSResolverController {
 
   /**
    * Get principal id by name.
-   * @param {string} domain  Represents user domain, such as: 'test.icp'
-   * @returns {Promise<Principal>}
+   * @param {string} domain  Represents user domain, such as: 'test.icp'.
+   * @returns {Promise<Principal>} Return Principal id in domain's record.
    */
   async getPrincipalId(domain: string): Promise<Principal> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
@@ -77,9 +77,9 @@ export class ICNSResolverController {
 
   /**
    * Get setted coin address.
-   * @param {string} domain Represents domain name
-   * @param {string} coinType Represents coin type
-   * @returns {Promise<string>} Return coin address
+   * @param {string} domain Represents domain name.
+   * @param {string} coinType Represents coin type.
+   * @returns {Promise<string>} Return coin address.
    */
   async getAddr(domain: string, coinType: string): Promise<string> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
@@ -103,9 +103,9 @@ export class ICNSResolverController {
 
   /**
    * Get text info.
-   * @param {string} domain Represents user domain, such as: 'test.icp'
-   * @param {string} key Represents user info, such as: twitter
-   * @returns {Promise<string>} Return user info
+   * @param {string} domain Represents user domain, such as: 'test.icp'.
+   * @param {string} key Represents user info, such as: twitter.
+   * @returns {Promise<string>} Return user info.
    */
   async getText(domain: string, key: string): Promise<string> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
@@ -117,9 +117,9 @@ export class ICNSResolverController {
 
   /**
    * Get canister id in the record.
-   * @param {string} domain Represents user domain, such as: 'test.icp'
-   * @param {string} key Represents canister, such as: main
-   * @returns {Promise<Principal>} Return canister id in the record
+   * @param {string} domain Represents user domain, such as: 'test.icp'.
+   * @param {string} key Represents canister, such as: main.
+   * @returns {Promise<Principal>} Return canister id in the record.
    */
   async getCanister(domain: string, key: string): Promise<Principal> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
@@ -131,8 +131,8 @@ export class ICNSResolverController {
 
   /**
    * Get host record.
-   * @param {string} domain Represents user domain, such as: 'test.icp'
-   * @returns {Promise<ICNSResolverController.Host>} Return host of a domain name
+   * @param {string} domain Represents user domain, such as: 'test.icp'.
+   * @returns {Promise<ICNSResolverController.Host>} Return host of a domain name.
    */
   async getHost(domain: string): Promise<Principal | string> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
@@ -148,11 +148,11 @@ export class ICNSResolverController {
 
   /**
    * Set default info according to domain.
-   * @param {string} domain  Represents user domain, such as: 'test.icp'
-   * @param {ICNSResolverController.DefaultInfo} type Represents which type info user wants to set
-   * @param {string} value Represents the value
-   * @param {string} extensionType Represents the extra type user wants to set
-   * @returns {Promise<void>}
+   * @param {string} domain  Represents user domain, such as: 'test.icp'.
+   * @param {ICNSResolverController.DefaultInfo} type Represents which type info user wants to set.
+   * @param {string} value Represents the value.
+   * @param {string} extensionType Represents the extra type user wants to set.
+   * @returns {Promise<void>} Return void promise.
    */
   async setDefaultInfo(
     domain: string,
@@ -283,10 +283,10 @@ export class ICNSResolverController {
 
   /**
    * Set coin addresss in user info.
-   * @param {string} domain  Represents user domain, such as: 'test.icp'
-   * @param {string} coinType  Represents user domain, such as: 'test.icp'
-   * @param {string} value Represents coin address
-   * @returns {Promise<void>}
+   * @param {string} domain  Represents user domain, such as: 'test.icp'.
+   * @param {string} coinType  Represents user domain, such as: 'test.icp'.
+   * @param {string} value Represents coin address.
+   * @returns {Promise<void>} Return void promise.
    */
   async setAddr(
     domain: string,
@@ -310,10 +310,10 @@ export class ICNSResolverController {
 
   /**
    * Set text in user info.
-   * @param {string} domain  Represents user domain, such as: 'test.icp'
-   * @param {string} coinType  Represents user domain, such as: 'test.icp'
-   * @param {string} value Represents info
-   * @returns {Promise<void>}
+   * @param {string} domain Represents user domain, such as: 'test.icp'.
+   * @param {string} key Represents user domain, such as: 'test.icp'.
+   * @param {string} value Represents info.
+   * @returns {Promise<void>} Return void promise.
    */
   async setText(
     domain: string,
@@ -332,10 +332,10 @@ export class ICNSResolverController {
 
   /**
    * Set canister id in user info.
-   * @param {string} domain  Represents user domain, such as: 'test.icp'
-   * @param {string} coinType  Represents user domain, such as: 'test.icp'
-   * @param {string} value Represents canister id
-   * @returns {Promise<void>}
+   * @param {string} domain  Represents user domain, such as: 'test.icp'.
+   * @param {string} key  Represents user domain, such as: 'test.icp'.
+   * @param {string} value Represents canister id.
+   * @returns {Promise<void>} Return void promise.
    */
   async setCanister(
     domain: string,
@@ -358,13 +358,13 @@ export class ICNSResolverController {
 
   /**
    * Set host record in user info.
-   * @param {string} domain  Represents user domain, such as: 'test.icp'
-   * @param {ICNSResolverController.Host} params host type
-   * @returns {Promise<void>}
+   * @param {string} domain Represents user domain, such as: 'test.icp'.
+   * @param {ICNSResolverController.Host} params Host value.
+   * @returns {Promise<void>} Return void promise.
    */
   async setHost(
     domain: string,
-    params?: ICNSResolverController.Host
+    params?: Types.Host
   ): Promise<void> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
@@ -384,9 +384,11 @@ export class ICNSResolverController {
 }
 
 /**
+ * @internal
  * Type definition for the ICNSResolverController.
  */
 export namespace ICNSResolverController {
+
   /**
    * Type definition for params of the setDefaultInfo function.
    * @param {DefaultInfo}
@@ -409,11 +411,4 @@ export namespace ICNSResolverController {
     github,
     avatar,
   }
-
-  /**
-   * Type definition for Host of domains. It is a url or a principal id.
-   * @param {string} url
-   * @param {Principal} canister
-   */
-  export type Host = { url: string } | { canister: Principal };
 }

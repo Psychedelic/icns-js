@@ -18,6 +18,7 @@ export interface DefaultInfoExt {
   'github' : [] | [string],
   'avatar' : [] | [string],
 }
+/** @internal */
 export interface ICNSResolver {
   'getAddr' : (arg_0: string, arg_1: string) => Promise<[] | [string]>,
   'getCanister' : (arg_0: string, arg_1: string) => Promise<[] | [Principal]>,
@@ -55,5 +56,6 @@ interface Info {
   'entries' : bigint,
   'cycles' : bigint,
 }
+/** @internal */
 type Result = { 'ok' : null } |
   { 'err' : string };

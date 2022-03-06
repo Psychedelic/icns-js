@@ -49,6 +49,7 @@ export class ICNSRegistrarController {
 
   /**
    * Verify domain available or not.
+   * @param {string} domain Represents domain name.
    * @returns {Promise<boolean | string>}
    */
   async domainIsAvailable(domain: string): Promise<boolean | string> {
@@ -60,8 +61,9 @@ export class ICNSRegistrarController {
   }
 
   /**
-   * Verify domain is onAuction or not.
-   * @returns {Promise<[] | [AuctionExt]>}
+   * Get auction state.
+   * @param {string} domain Represents domain name.
+   * @returns {Promise<[] | [AuctionExt]>} Return auction state.
    */
   async getAuciton(domain: string): Promise<[] | [AuctionExt]> {
     if (!VerifyDomainName(domain))
@@ -74,8 +76,8 @@ export class ICNSRegistrarController {
 
   /**
    * Get one token balance for a given principal id (wicp as default).
-   * @param {principalId} params Represents user identity
-   * @returns {Promise<Token.Balance>}
+   * @param {string} principalId Represents user identity.
+   * @returns {Promise<Token.Balance>} Return balance.
    */
   async getUserBalance(principalId: string): Promise<Token.Balance> {
     const principal = Principal.fromText(principalId);
@@ -119,14 +121,14 @@ export class ICNSRegistrarController {
    * Approve transfers from token to registrar canister.
    * This function uses the actor agent identity.
    * This function needs to be called before operate with registrar canister.
-   * @param {Types.Amount} amount the amount of the token to be approved
-   * @param {string} tokenId the canister id of the token to be approved
-   * @returns {Promise<void>} 
+   * @param {string | undefined} tokenId the canister id of the token to be approved.
+   * @param {Types.Amount} amount the amount of the token to be approved.
+   * @returns {Promise<void>} Return void promise.
    */
-  async approve({
-    tokenId,
-    amount,
-  }: ICNSRegistrarController.ApproveParams): Promise<void> {
+  async approve(
+    tokenId: string | undefined,
+    amount: Types.Amount,
+  ): Promise<void> {
 
     const tokenActor = await createTokenActor({
       canisterId: tokenId,
@@ -158,17 +160,17 @@ export class ICNSRegistrarController {
    * This function uses the actor agent identity.
    * @param {Types.Amount} amount the amount of this bid.
    * @param {string} domian domain name, 'hello' for example.
-   * @returns {Promise<void>}
+   * @returns {Promise<void>} Return void promise.
    */
-  async placeBid({
-    domain,
-    amount,
-  }: ICNSRegistrarController.PlaceBidParams): Promise<void> {
+  async placeBid(
+    domain: string,
+    amount: Types.Amount
+  ): Promise<void> {
     if (!VerifyDomainName(domain))
       throw new Error('Incorrect domain name')
     const name = removeIcpSuffix(domain)
 
-    await this.approve({ tokenId: ICNSConstants.canisterIds.WICP, amount });
+    await this.approve(ICNSConstants.canisterIds.WICP, amount);
 
     const parsedAmount = toBigNumber(amount).removeDecimals(ICNSConstants.wicpDecimal);
 
@@ -185,12 +187,12 @@ export class ICNSRegistrarController {
  * This function uses the actor agent identity.
  * @param {Types.Number} duration duration of this renew, 1 for 1 year.
  * @param {string} domain domain name to be renewed, 'hello' for example.
- * @returns {Promise<void>}
+ * @returns {Promise<void>} Return void promise.
  */
-  async renew({
-    domain,
-    duration,
-  }: ICNSRegistrarController.RenewParams): Promise<void> {
+  async renew(
+    domain: string,
+    duration: Types.Number,
+  ): Promise<void> {
     if (!VerifyDomainName(domain))
       throw new Error('Incorrect domain name')
     const name = removeIcpSuffix(domain)
@@ -205,7 +207,7 @@ export class ICNSRegistrarController {
     let unitPrice = name.length >= renewPrice.length ? renewPrice[renewPrice.length - 1] : renewPrice[name.length - 1]
     let amount = (Number(duration) * unitPrice).toString()
 
-    await this.approve({ tokenId: ICNSConstants.canisterIds.WICP, amount });
+    await this.approve(ICNSConstants.canisterIds.WICP, amount);
 
     const result = await this.registrarActor.renew(
       name,
@@ -218,8 +220,8 @@ export class ICNSRegistrarController {
   /**
  * Claim into canister.
  * This function uses the actor agent identity.
- * @param {String} domain domain name to be claimed
- * @returns {Promise<void>}
+ * @param {String} domain domain name to be claimed.
+ * @returns {Promise<void>} Return void promise.
  */
   async claim(domain: string): Promise<void> {
     if (!VerifyDomainName(domain))
@@ -236,7 +238,7 @@ export class ICNSRegistrarController {
   /**
    * Withdraw wicp tokens from registrar canister.
    * This function uses the actor agent identity.
-   * @returns {Promise<void>}
+   * @returns {Promise<void>} Return void promise
    */
   async withdraw(): Promise<void> {
 
@@ -246,40 +248,4 @@ export class ICNSRegistrarController {
 
     if ('err' in result) throw new Error(JSON.stringify(result.err));
   }
-}
-
-/**
- * Type definition for the ICNSRegistrarController.
- */
-export namespace ICNSRegistrarController {
-  /**
-   * Type definition for params of the approve function.
-   * @param {Types.Amount} amount
-   * @param {string} tokenId
-   */
-  export type ApproveParams = {
-    amount: Types.Amount;
-    tokenId?: string;
-  };
-
-  /**
-   * Type definition for params of the placebid function.
-   * @param {Types.Amount} amount
-   * @param {string} domian
-   */
-  export type PlaceBidParams = {
-    amount: Types.Amount;
-    domain: string;
-  };
-
-  /**
-   * Type definition for params of the renew function.
-   * @param {Types.Number} duration
-   * @param {string} domain
-   */
-  export type RenewParams = {
-    duration: Types.Number;
-    domain: string;
-  };
-
 }

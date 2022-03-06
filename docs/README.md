@@ -2,36 +2,11 @@
 
 ## Table of contents
 
-### Classes
-
-- [ActorAdapter](classes/ActorAdapter.md)
-- [ICNSRegistrarController](classes/ICNSRegistrarController.md)
-- [ICNSRegistryController](classes/ICNSRegistryController.md)
-- [ICNSResolverController](classes/ICNSResolverController.md)
-- [ICNSReverseController](classes/ICNSReverseController.md)
-
-### Namespaces
-
-- [ActorAdapter](modules/ActorAdapter.md)
-- [Domain](modules/Domain.md)
-- [ICNSRegistrarController](modules/ICNSRegistrarController.md)
-- [ICNSRegistryController](modules/ICNSRegistryController.md)
-- [ICNSResolverController](modules/ICNSResolverController.md)
-- [Token](modules/Token.md)
-- [Types](modules/Types.md)
-
 ### Interfaces
 
 - [AuctionExt](interfaces/AuctionExt.md)
 - [BidExt](interfaces/BidExt.md)
-- [CreateCanisterActorOptions](interfaces/CreateCanisterActorOptions.md)
 - [DefaultInfoExt](interfaces/DefaultInfoExt.md)
-- [ICNSFavorite](interfaces/ICNSFavorite.md)
-- [ICNSRegistrar](interfaces/ICNSRegistrar.md)
-- [ICNSRegistry](interfaces/ICNSRegistry.md)
-- [ICNSResolver](interfaces/ICNSResolver.md)
-- [ICNSReverseRegistrar](interfaces/ICNSReverseRegistrar.md)
-- [ICNSToken](interfaces/ICNSToken.md)
 - [Info](interfaces/Info.md)
 - [Metadata](interfaces/Metadata.md)
 - [RecordExt](interfaces/RecordExt.md)
@@ -53,6 +28,18 @@
 
 - [ICNSConstants](README.md#icnsconstants)
 
+### Classes
+
+- [ICNSRegistrarController](classes/ICNSRegistrarController.md)
+- [ICNSRegistryController](classes/ICNSRegistryController.md)
+- [ICNSResolverController](classes/ICNSResolverController.md)
+- [ICNSReverseController](classes/ICNSReverseController.md)
+
+### Namespaces
+
+- [Token](modules/Token.md)
+- [Types](modules/Types.md)
+
 ### Functions
 
 - [VerifyDomainName](README.md#verifydomainname)
@@ -66,13 +53,6 @@
 - [formatAmount](README.md#formatamount)
 - [getCrc32](README.md#getcrc32)
 - [getDeadline](README.md#getdeadline)
-- [idlFavoriteFactory](README.md#idlfavoritefactory)
-- [idlRegistrarFactory](README.md#idlregistrarfactory)
-- [idlRegistryFactory](README.md#idlregistryfactory)
-- [idlResolverFactory](README.md#idlresolverfactory)
-- [idlReverseRegistrarFactory](README.md#idlreverseregistrarfactory)
-- [idlWICPFactory](README.md#idlwicpfactory)
-- [init](README.md#init)
 - [removeIcpSuffix](README.md#removeicpsuffix)
 - [toBigNumber](README.md#tobignumber)
 - [toExponential](README.md#toexponential)
@@ -88,7 +68,7 @@ ___
 
 ### FavoriteActor
 
-Ƭ **FavoriteActor**: [`Actor`](modules/ActorAdapter.md#actor)<[`ICNSFavorite`](interfaces/ICNSFavorite.md)\>
+Ƭ **FavoriteActor**: `ActorAdapter.Actor`<`ICNSFavorite`\>
 
 Type of FavoriteActor.
 
@@ -102,7 +82,7 @@ ___
 
 ### RegistrarActor
 
-Ƭ **RegistrarActor**: [`Actor`](modules/ActorAdapter.md#actor)<[`ICNSRegistrar`](interfaces/ICNSRegistrar.md)\>
+Ƭ **RegistrarActor**: `ActorAdapter.Actor`<`ICNSRegistrar`\>
 
 Type of RegistrarActor.
 
@@ -110,7 +90,7 @@ ___
 
 ### RegistryActor
 
-Ƭ **RegistryActor**: [`Actor`](modules/ActorAdapter.md#actor)<[`ICNSRegistry`](interfaces/ICNSRegistry.md)\>
+Ƭ **RegistryActor**: `ActorAdapter.Actor`<`ICNSRegistry`\>
 
 Type of RegistryActor.
 
@@ -118,7 +98,7 @@ ___
 
 ### ResolverActor
 
-Ƭ **ResolverActor**: [`Actor`](modules/ActorAdapter.md#actor)<[`ICNSResolver`](interfaces/ICNSResolver.md)\>
+Ƭ **ResolverActor**: `ActorAdapter.Actor`<`ICNSResolver`\>
 
 Type of ResolverActor.
 
@@ -126,7 +106,7 @@ ___
 
 ### ReverseActor
 
-Ƭ **ReverseActor**: [`Actor`](modules/ActorAdapter.md#actor)<[`ICNSReverseRegistrar`](interfaces/ICNSReverseRegistrar.md)\>
+Ƭ **ReverseActor**: `ActorAdapter.Actor`<`ICNSReverseRegistrar`\>
 
 Type of ReverseActor.
 
@@ -134,7 +114,7 @@ ___
 
 ### TokenActor
 
-Ƭ **TokenActor**: [`Actor`](modules/ActorAdapter.md#actor)<[`ICNSToken`](interfaces/ICNSToken.md)\>
+Ƭ **TokenActor**: `ActorAdapter.Actor`<`ICNSToken`\>
 
 Type of WICPActor.
 
@@ -211,7 +191,7 @@ If no option is provided, the actor will be created using the default canister o
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`CreateCanisterActorOptions`](interfaces/CreateCanisterActorOptions.md) | Options for creating the FavoriteActor |
+| `options` | `CreateCanisterActorOptions` | Options for creating the FavoriteActor |
 
 #### Returns
 
@@ -232,7 +212,7 @@ If no option is provided, the actor will be created using the default canister o
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`CreateCanisterActorOptions`](interfaces/CreateCanisterActorOptions.md) | Options for creating the RegistrarActor |
+| `options` | `CreateCanisterActorOptions` | Options for creating the RegistrarActor |
 
 #### Returns
 
@@ -253,7 +233,7 @@ If no option is provided, the actor will be created using the default canister o
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`CreateCanisterActorOptions`](interfaces/CreateCanisterActorOptions.md) | Options for creating the RegistryActor |
+| `options` | `CreateCanisterActorOptions` | Options for creating the RegistryActor |
 
 #### Returns
 
@@ -274,7 +254,7 @@ If no option is provided, the actor will be created using the default canister o
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`CreateCanisterActorOptions`](interfaces/CreateCanisterActorOptions.md) | Options for creating the ResolverActor |
+| `options` | `CreateCanisterActorOptions` | Options for creating the ResolverActor |
 
 #### Returns
 
@@ -295,7 +275,7 @@ If no option is provided, the actor will be created using the default canister o
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`CreateCanisterActorOptions`](interfaces/CreateCanisterActorOptions.md) | Options for creating the ReverseActor |
+| `options` | `CreateCanisterActorOptions` | Options for creating the ReverseActor |
 
 #### Returns
 
@@ -316,7 +296,7 @@ If no option is provided, the actor will be created using the default canister o
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`CreateCanisterActorOptions`](interfaces/CreateCanisterActorOptions.md) | Options for creating the TokenActor |
+| `options` | `CreateCanisterActorOptions` | Options for creating the TokenActor |
 
 #### Returns
 
@@ -374,118 +354,6 @@ Get deadline for swap canister requests.
 
 ___
 
-### idlFavoriteFactory
-
-▸ **idlFavoriteFactory**(`__namedParameters`): `any`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-
-#### Returns
-
-`any`
-
-___
-
-### idlRegistrarFactory
-
-▸ **idlRegistrarFactory**(`__namedParameters`): `any`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-
-#### Returns
-
-`any`
-
-___
-
-### idlRegistryFactory
-
-▸ **idlRegistryFactory**(`__namedParameters`): `any`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-
-#### Returns
-
-`any`
-
-___
-
-### idlResolverFactory
-
-▸ **idlResolverFactory**(`__namedParameters`): `any`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-
-#### Returns
-
-`any`
-
-___
-
-### idlReverseRegistrarFactory
-
-▸ **idlReverseRegistrarFactory**(`__namedParameters`): `any`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-
-#### Returns
-
-`any`
-
-___
-
-### idlWICPFactory
-
-▸ **idlWICPFactory**(`__namedParameters`): `any`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-
-#### Returns
-
-`any`
-
-___
-
-### init
-
-▸ **init**(`__namedParameters`): `any`[]
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-
-#### Returns
-
-`any`[]
-
-___
-
 ### removeIcpSuffix
 
 ▸ **removeIcpSuffix**(`name`): `string`
@@ -510,10 +378,10 @@ Converts a value to a BigNumber.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `num?` | [`Number`](modules/Types.md#number) |
-| `options?` | [`ToBigNumberOptions`](interfaces/ToBigNumberOptions.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `num?` | [`Number`](modules/Types.md#number) | Represents number value. |
+| `options?` | [`ToBigNumberOptions`](interfaces/ToBigNumberOptions.md) | Represents value options. |
 
 #### Returns
 

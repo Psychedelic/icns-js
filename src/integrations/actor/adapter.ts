@@ -4,6 +4,7 @@ import { IDL } from '@dfinity/candid';
 import fetch from 'cross-fetch';
 
 /**
+ * @internal
  * Adapter responsible for creating actors.
  * It can receive a provider to identify the actor like a wallet provider (e.g. Plug).
  */
@@ -20,6 +21,7 @@ export class ActorAdapter {
 
   /**
    * Creates a new actor or use from memory if is already created.
+   * @internal
    * @param {string} canisterId The canister id of the actor
    * @param {IDL.InterfaceFactory} interfaceFactory The interface factory of the actor
    * @returns {Promise<ActorAdapter.Actor<T>>} The actor
@@ -65,8 +67,9 @@ export class ActorAdapter {
 
   /**
    * Creates the agent from provider.
+   * @internal
    * @param {string[]} extraWhitelist Extra whitelist to add to the ICNSConstants whitelist
-   * @returns {Promise<void>}
+   * @returns {Promise<void>} Return void promise
    */
   private async createAgent(extraWhitelist: string[] = []): Promise<void> {
     if (this.provider) {
@@ -111,6 +114,7 @@ export class ActorAdapter {
 }
 
 /**
+ * @internal
  * Type definition for the ActorAdapter.
  */
 export namespace ActorAdapter {

@@ -60,14 +60,14 @@ Get setted coin address.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents domain name |
-| `coinType` | `string` | Represents coin type |
+| `domain` | `string` | Represents domain name. |
+| `coinType` | `string` | Represents coin type. |
 
 #### Returns
 
 `Promise`<`string`\>
 
-Return coin address
+Return coin address.
 
 ___
 
@@ -81,14 +81,14 @@ Get canister id in the record.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents user domain, such as: 'test.icp' |
-| `key` | `string` | Represents canister, such as: main |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `key` | `string` | Represents canister, such as: main. |
 
 #### Returns
 
 `Promise`<`Principal`\>
 
-Return canister id in the record
+Return canister id in the record.
 
 ___
 
@@ -102,13 +102,13 @@ Get host record.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
 
 #### Returns
 
 `Promise`<`string` \| `Principal`\>
 
-Return host of a domain name
+Return host of a domain name.
 
 ___
 
@@ -122,11 +122,13 @@ Get principal id by name.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
 
 #### Returns
 
 `Promise`<`Principal`\>
+
+Return Principal id in domain's record.
 
 ___
 
@@ -140,14 +142,14 @@ Get text info.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents user domain, such as: 'test.icp' |
-| `key` | `string` | Represents user info, such as: twitter |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `key` | `string` | Represents user info, such as: twitter. |
 
 #### Returns
 
 `Promise`<`string`\>
 
-Return user info
+Return user info.
 
 ___
 
@@ -161,13 +163,13 @@ Get user default info in resolver canister.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents user domain, such as: 'test.icp' |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
 
 #### Returns
 
 `Promise`<``null`` \| [`DefaultInfoExt`](../interfaces/DefaultInfoExt.md)\>
 
-Return info or null
+Return info or null.
 
 ___
 
@@ -181,13 +183,15 @@ Set coin addresss in user info.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents user domain, such as: 'test.icp' |
-| `coinType` | `string` | Represents user domain, such as: 'test.icp' |
-| `value` | `string` | Represents coin address |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `coinType` | `string` | Represents user domain, such as: 'test.icp'. |
+| `value` | `string` | Represents coin address. |
 
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise.
 
 ___
 
@@ -201,13 +205,15 @@ Set canister id in user info.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents user domain, such as: 'test.icp' |
-| `key` | `string` | - |
-| `value` | `string` | Represents canister id |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `key` | `string` | Represents user domain, such as: 'test.icp'. |
+| `value` | `string` | Represents canister id. |
 
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise.
 
 ___
 
@@ -221,14 +227,16 @@ Set default info according to domain.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents user domain, such as: 'test.icp' |
-| `type` | [`DefaultInfo`](../enums/ICNSResolverController.DefaultInfo.md) | Represents which type info user wants to set |
-| `value` | `string` | Represents the value |
-| `extensionType?` | `string` | Represents the extra type user wants to set |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `type` | `DefaultInfo` | Represents which type info user wants to set. |
+| `value` | `string` | Represents the value. |
+| `extensionType?` | `string` | Represents the extra type user wants to set. |
 
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise.
 
 ___
 
@@ -242,12 +250,14 @@ Set host record in user info.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents user domain, such as: 'test.icp' |
-| `params?` | [`Host`](../modules/ICNSResolverController.md#host) | host type |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `params?` | [`Host`](../modules/Types.md#host) | Host value. |
 
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise.
 
 ___
 
@@ -261,10 +271,12 @@ Set text in user info.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `domain` | `string` | Represents user domain, such as: 'test.icp' |
-| `key` | `string` | - |
-| `value` | `string` | Represents info |
+| `domain` | `string` | Represents user domain, such as: 'test.icp'. |
+| `key` | `string` | Represents user domain, such as: 'test.icp'. |
+| `value` | `string` | Represents info. |
 
 #### Returns
 
 `Promise`<`void`\>
+
+Return void promise.

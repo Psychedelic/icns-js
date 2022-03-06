@@ -1,4 +1,5 @@
 import type { Principal } from '@dfinity/principal';
+/** @internal */
 export interface ICNSRegistry {
   'addWhitelist': (arg_0: string) => Promise<boolean>,
   'approve': (arg_0: string, arg_1: Principal) => Promise<TxReceipt>,

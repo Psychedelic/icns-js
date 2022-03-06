@@ -15,6 +15,7 @@ export interface BidExt {
 export type BidState = { 'win' : null } |
   { 'lost' : null } |
   { 'processing' : null };
+/** @internal */
 export interface ICNSRegistrar {
   'addReserve' : (arg_0: string) => Promise<Result_1>,
   'addReserveBatch' : (arg_0: string) => Promise<Result_1>,

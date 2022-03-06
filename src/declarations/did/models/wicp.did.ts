@@ -14,6 +14,7 @@ export type Operation = { 'transferFrom': null } |
 { 'approve': null } |
 { 'transfer': null };
 type Time = bigint;
+/** @internal */
 export interface ICNSToken {
   'allowance': (arg_0: Principal, arg_1: Principal) => Promise<bigint>,
   'approve': (arg_0: Principal, arg_1: bigint) => Promise<WICPTxReceipt>,

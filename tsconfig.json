@@ -28,6 +28,7 @@
   },
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
+    "exclude": ["src/declarations/did/*.js"],
     "out": "docs"
   },
   "include": ["src", "tests"],
