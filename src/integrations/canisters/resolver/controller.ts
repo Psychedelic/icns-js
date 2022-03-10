@@ -296,7 +296,7 @@ export class ICNSResolverController {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     if (coinType.length === 0 || coinType.length > 50) throw new Error('coin name lenght should be between 1 and 50')
-    if (value.length === 0 || value.length > 250) throw new Error('value lenght should be between 1 and 250')
+    if (value.length > 250) throw new Error('value lenght should be between 1 and 250')
 
     try {
       formatsByName[coinType.toUpperCase()].decoder(value);
@@ -323,7 +323,7 @@ export class ICNSResolverController {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     if (key.length === 0 || key.length > 50) throw new Error('key lenght should be between 1 and 50')
-    if (value.length === 0 || value.length > 250) throw new Error('value lenght should be between 1 and 250')
+    if (value.length > 250) throw new Error('value lenght should be between 1 and 250')
 
     await this.getAgentPrincipal(); // user identity
     const result = await this.resolverActor.setText(name, key, [value]);
