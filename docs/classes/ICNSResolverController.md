@@ -185,7 +185,7 @@ Set coin addresss in user info.
 | :------ | :------ | :------ |
 | `domain` | `string` | Represents user domain, such as: 'test.icp'. |
 | `coinType` | `string` | Represents user domain, such as: 'test.icp'. |
-| `value` | `string` | Represents coin address. |
+| `value` | `string` | Represents coin address. '' is allowed to unset this coinType field. Length must be less than 250. This sdk will varify the value. |
 
 #### Returns
 
@@ -273,7 +273,7 @@ Set text in user info.
 | :------ | :------ | :------ |
 | `domain` | `string` | Represents user domain, such as: 'test.icp'. |
 | `key` | `string` | Represents user domain, such as: 'test.icp'. |
-| `value` | `string` | Represents info. |
+| `value` | `string` | Represents info. '' is allowed to unset this info field(if it's an extension field, it will be deleted). Length must be less than 250. |
 
 #### Returns
 
