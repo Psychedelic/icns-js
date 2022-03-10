@@ -285,7 +285,7 @@ export class ICNSResolverController {
    * Set coin addresss in user info.
    * @param {string} domain  Represents user domain, such as: 'test.icp'.
    * @param {string} coinType  Represents user domain, such as: 'test.icp'.
-   * @param {string} value Represents coin address.
+   * @param {string} value Represents coin address. '' is allowed to unset this coinType field. Length must be less than 250. This sdk will varify the value.
    * @returns {Promise<void>} Return void promise.
    */
   async setAddr(
@@ -304,7 +304,7 @@ export class ICNSResolverController {
       throw new Error('Incorrect coin address format');
     }
     await this.getAgentPrincipal(); // user identity
-    const result = await this.resolverActor.setAddr(name, coinType, [value]);
+    const result = await this.resolverActor.setAddr(name, coinType, value?[value]:[]);
     if ("err" in result) throw new Error(JSON.stringify(result.err));
   }
 
@@ -312,7 +312,7 @@ export class ICNSResolverController {
    * Set text in user info.
    * @param {string} domain Represents user domain, such as: 'test.icp'.
    * @param {string} key Represents user domain, such as: 'test.icp'.
-   * @param {string} value Represents info.
+   * @param {string} value Represents info. '' is allowed to unset this info field(if it's an extension field, it will be deleted). Length must be less than 250.
    * @returns {Promise<void>} Return void promise.
    */
   async setText(
@@ -324,9 +324,8 @@ export class ICNSResolverController {
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     if (key.length === 0 || key.length > 50) throw new Error('key lenght should be between 1 and 50')
     if (value.length > 250) throw new Error('value lenght should be between 1 and 250')
-
     await this.getAgentPrincipal(); // user identity
-    const result = await this.resolverActor.setText(name, key, [value]);
+    const result = await this.resolverActor.setText(name, key, value?[value]:[]);
     if ("err" in result) throw new Error(JSON.stringify(result.err));
   }
 

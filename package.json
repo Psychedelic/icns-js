@@ -1,6 +1,6 @@
 {
   "name": "icns-js",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "icns-js is a library for interacting with ICNS canisters",
   "main": "dist/index.js",
   "repository": "https://github.com/icns-id/icns-js.git",
