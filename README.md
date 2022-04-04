@@ -1,3 +1,4 @@
+![image](https://user-images.githubusercontent.com/73345016/161631070-a2049e53-32b7-4068-b3ad-135ab2f51501.png)
 ## icns-js: SDK for interacting with ICNS canisters
 
 icns-js provides interfaces for interacting with the ICNS canisters, there are 4 main canisters:
