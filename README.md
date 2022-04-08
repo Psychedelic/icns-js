@@ -58,10 +58,10 @@ npm config set @psychedelic:registry https://npm.pkg.github.com
 @psychedelic:registry=https://npm.pkg.github.com
 ```
 
-You're all set! Install Sonic-js into your project with the following command:
+You're all set! Install icns-js into your project with the following command:
 
 ```bash
-yarn add @psychedelic/sonic-js
+yarn add @psychedelic/icns-js
 ```
 
 <br>
