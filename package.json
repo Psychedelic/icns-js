@@ -1,9 +1,9 @@
 {
-  "name": "icns-js",
+  "name": "@psychedelic/icns-js",
   "version": "0.1.9",
   "description": "icns-js is a library for interacting with ICNS canisters",
   "main": "dist/index.js",
-  "repository": "https://github.com/icns-id/icns-js.git",
+  "repository": "https://github.com/Psychedelic/icns-js.git",
   "author": "ICNS Team",
   "license": "GLP-3.0",
   "devDependencies": {
