@@ -2,9 +2,7 @@ import { ICNSConstants, DefaultInfoExt, idlResolverFactory, Types } from "@/decl
 import { Actor } from "@dfinity/agent";
 import { Principal } from "@dfinity/principal";
 import { ActorAdapter, createRegistryActor, ResolverActor } from "../..";
-import { formatsByName } from '@ensdomains/address-encoder';
-
-import { addIcpSuffix, verifyAccountId, VerifyDomainName } from "@/utils/format";
+import { addIcpSuffix, VerifyDomainName } from "@/utils/format";
 
 /**
  * ICNS Resolver Controller.
@@ -87,18 +85,7 @@ export class ICNSResolverController {
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
     const result = await this.resolverActor.getAddr(name, coinType)
     if (!result[0]) throw new Error('coin address not set')
-    try {
-      if (coinType === 'icp.principal') {
-        Principal.fromText(result[0])
-      } else if (coinType === 'icp.account') {
-        verifyAccountId(result[0])
-      } else {
-        formatsByName[coinType.toUpperCase()].decoder(result[0])
-      }
-      return result[0]
-    } catch {
-      throw new Error('Not supported coin type ')
-    }
+    return result[0]
   }
 
   /**
@@ -293,19 +280,20 @@ export class ICNSResolverController {
     coinType: string,
     value: string
   ): Promise<void> {
-    if (!VerifyDomainName(domain)) throw new Error("name format error");
-    const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
-    if (coinType.length === 0 || coinType.length > 50) throw new Error('coin name lenght should be between 1 and 50')
-    if (value.length > 250) throw new Error('value lenght should be between 1 and 250')
+    throw new Error("Not supported function");
+    // if (!VerifyDomainName(domain)) throw new Error("name format error");
+    // const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
+    // if (coinType.length === 0 || coinType.length > 50) throw new Error('coin name lenght should be between 1 and 50')
+    // if (value.length > 250) throw new Error('value lenght should be between 1 and 250')
 
-    try {
-      formatsByName[coinType.toUpperCase()].decoder(value);
-    } catch {
-      throw new Error('Incorrect coin address format');
-    }
-    await this.getAgentPrincipal(); // user identity
-    const result = await this.resolverActor.setAddr(name, coinType, value?[value]:[]);
-    if ("err" in result) throw new Error(JSON.stringify(result.err));
+    // try {
+    //   formatsByName[coinType.toUpperCase()].decoder(value);
+    // } catch {
+    //   throw new Error('Incorrect coin address format');
+    // }
+    // await this.getAgentPrincipal(); // user identity
+    // const result = await this.resolverActor.setAddr(name, coinType, value ? [value] : []);
+    // if ("err" in result) throw new Error(JSON.stringify(result.err));
   }
 
   /**
@@ -322,10 +310,10 @@ export class ICNSResolverController {
   ): Promise<void> {
     if (!VerifyDomainName(domain)) throw new Error("name format error");
     const name = addIcpSuffix(domain); // guarantee the domain name with .icp suffix
-    if (key.length === 0 || key.length > 50) throw new Error('key lenght should be between 1 and 50')
+    if (key.length <= 0 || key.length > 50) throw new Error('key lenght should be between 1 and 50')
     if (value.length > 250) throw new Error('value lenght should be between 1 and 250')
     await this.getAgentPrincipal(); // user identity
-    const result = await this.resolverActor.setText(name, key, value?[value]:[]);
+    const result = await this.resolverActor.setText(name, key, value ? [value] : []);
     if ("err" in result) throw new Error(JSON.stringify(result.err));
   }
 
